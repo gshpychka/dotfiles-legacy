@@ -342,7 +342,7 @@ format-underline = #c2bbb2
 
 [module/g930-bat]
 type = custom/script
-exec = sudo g930-battery-percentage
+exec = sudo g930-battery-percentage 2> /dev/null
 interval = 60
 format-prefix = " "
 format = <label>%
