@@ -1,5 +1,6 @@
 xterm*faceName: JetBrainsMono Nerd Font Mono
 xterm*faceSize: 6
+xterm*VT100*selectToClipboard: true
 
 #define S_base03        #002b36
 #define S_base02        #073642
