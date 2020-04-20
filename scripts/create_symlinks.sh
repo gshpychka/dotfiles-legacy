@@ -16,3 +16,5 @@ rm ~/.Xresources
 ln -s $DOTFILES/xorg/.Xresources ~/.Xresources
 rm ~/.config/nvim/init.vim
 ln -s $DOTFILES/nvim/init.vim ~/.config/nvim/init.vim
+rm -r ~/.config/borgmatic
+ln -s $DOTFILES/borgmatic ~/.config/borgmatic
