@@ -14,3 +14,4 @@ compinit
 
 path+=('/usr/lib/w3m/w3mimgdisplay')
 export path
+
