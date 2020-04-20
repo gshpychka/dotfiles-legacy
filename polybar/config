@@ -56,7 +56,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast
-modules-center = pulseaudio
+modules-center = pulseaudio g930-bat
 modules-right = xkeyboard date powermenu
 
 tray-position = right
@@ -339,6 +339,13 @@ type = custom/script
 exec = ~/polybar-scripts/openweathermap-forecast.sh
 interval = 600
 format-underline = #c2bbb2
+
+[module/g930-bat]
+type = custom/script
+exec = sudo g930-battery-percentage
+interval = 60
+format-prefix = " "
+format = <label>%
 
 [settings]
 screenchange-reload = true
