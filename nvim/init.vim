@@ -24,7 +24,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 
 " Solarized color scheme
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 
 " Statusline
 Plug 'vim-airline/vim-airline'
@@ -73,12 +74,13 @@ set wrapscan            " Searches wrap around EOF
 syntax enable
 
 " Colorscheme
-let g:solarized_termcolors=16
+let g:gruvbox_termcolors=16
+set termguicolors
 set t_Co=16
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme gruvbox
 
-let g:airline_theme='solarized'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 
 " NERDTree config
@@ -93,4 +95,4 @@ nnoremap <C-t> :TagbarToggle<CR>
 nnoremap <T> :TagbarOpen<CR>
 
 " Fix matching parenthesis highlighting
-hi MatchParen ctermfg=208 ctermbg=bg
+" hi MatchParen ctermfg=208 ctermbg=bg

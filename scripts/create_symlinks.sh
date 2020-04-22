@@ -13,7 +13,9 @@ ln -s $DOTFILES/polybar/launch.sh ~/.config/polybar/launch.sh
 rm -r ~/polybar-scripts
 ln -s $DOTFILES/polybar/polybar-scripts ~/polybar-scripts
 rm ~/.Xresources
-ln -s $DOTFILES/xorg/.Xresources ~/.Xresources
+ln -s $DOTFILES/X/.Xresources ~/.Xresources
+rm -r ~/.Xresources.d
+ln -s $DOTFILES/X/.Xresources.d ~/.Xresources.d
 rm ~/.config/nvim/init.vim
 ln -s $DOTFILES/nvim/init.vim ~/.config/nvim/init.vim
 rm -r ~/.config/borgmatic
