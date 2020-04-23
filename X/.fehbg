@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill --no-xinerama '/home/gshpychka/Downloads/44636242351_cf129fcb0b_o.jpg' 
