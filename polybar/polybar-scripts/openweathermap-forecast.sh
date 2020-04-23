@@ -56,9 +56,11 @@ fi
 
 if [ -n "$current" ] && [ -n "$forecast" ]; then
     current_temp=$(echo "$current" | jq ".main.temp" | cut -d "." -f 1)
+    current_feels=$(echo "$current" | jq ".main.feels_like" | cut -d "." -f 1)
     current_icon=$(echo "$current" | jq -r ".weather[0].icon")
 
     forecast_temp=$(echo "$forecast" | jq ".list[].main.temp" | cut -d "." -f 1)
+    forecast_feels=$(echo "$forecast" | jq ".list[].main.feels_like" | cut -d "." -f 1)
     forecast_icon=$(echo "$forecast" | jq -r ".list[].weather[0].icon")
 
     if [ "$current_temp" -gt "$forecast_temp" ]; then
@@ -69,5 +71,5 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
         trend=""
     fi
 
-    echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
+    echo "$(get_icon "$current_icon") $current_temp$SYMBOL ($current_feels$SYMBOL)  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL ($forecast_feels$SYMBOL)"
 fi
