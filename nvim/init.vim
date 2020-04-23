@@ -74,9 +74,9 @@ set wrapscan            " Searches wrap around EOF
 syntax enable
 
 " Colorscheme
-let g:gruvbox_termcolors=16
+" let g:gruvbox_termcolors=16
+" set t_Co=16
 set termguicolors
-set t_Co=16
 set background=dark
 colorscheme gruvbox
 
