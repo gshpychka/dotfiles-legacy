@@ -19,7 +19,7 @@ font pango:JetBrainsMono Nerd Font Mono 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-default_border pixel 1
+default_border none
 gaps inner 10
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
