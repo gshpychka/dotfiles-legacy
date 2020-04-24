@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Install
+Operation=Remove
+Type=Package
+Target=*
+
+[Action]
+Description=Generate the list of installed packages
+When=PostTransaction
+Exec=/home/gshpychka/dotfiles/scripts/generate_pkglist.sh
