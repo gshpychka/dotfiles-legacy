@@ -47,6 +47,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " .tmux.conf editing conveniences
 Plug 'tmux-plugins/vim-tmux'
 
+" SQL Workbench integration
+Plug 'cosminadrianpopescu/vim-sql-workbench'
+
 call plug#end()
 
 " Fuzzy file search
@@ -96,3 +99,8 @@ nnoremap <T> :TagbarOpen<CR>
 
 " Fix matching parenthesis highlighting
 " hi MatchParen ctermfg=208 ctermbg=bg
+
+" SQL Workbench configuration
+let g:sw_config_dir='/home/gshpychka/.sqlworkbench'
+let g:sw_exe='/opt/SQLWorkbench/sqlwbconsole.sh'
+let g:sw_cacne='/home/gshpychka/.cache/sw'
