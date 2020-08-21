@@ -1,0 +1,320 @@
+#! /bin/ruby
+
+require 'json'
+require 'net/http'
+require 'uri'
+require 'optparse'
+
+# COVID-19 CLI Summarizer, meant for taskbar widgets and such.
+# run `covsum --help` to see all options.
+module CovSum
+  # Main class, handles all the others.
+  class CLI
+    def initialize(args)
+      @args = args
+    end
+
+    def to_s
+      formatter.to_s
+    end
+
+    private
+
+    def options
+      @options ||= Parser.new(@args).options
+    end
+
+    def data
+      @data ||= DataStore.new(options).data
+    end
+
+    def formatter
+      @formatter ||= Formatter.new(options, data)
+    end
+  end
+
+  # Handles CLI arguments, makes an options hash
+  class Parser
+    attr_reader :options
+
+    def initialize(args)
+      @options = defaults
+      parser.parse!(args)
+      build_locations(args)
+    end
+
+    private
+
+    def parser
+      OptionParser.new do |options|
+        options.banner = helptext
+
+        help(options)
+        emojis(options)
+        fields(options)
+        update(options)
+        countries(options)
+      end
+    end
+
+    def update(options)
+      options.on '-U', '--update', 'Force Download' do
+        @options[:use_cache] = false
+      end
+    end
+
+    def emojis(options)
+      options.on '-e', '--emojis' do
+        @options[:emojis] = true
+      end
+    end
+
+    def help(options)
+      options.on '-h', '--help' do
+        puts options
+        exit
+      end
+    end
+
+    def fields(options)
+      options.on('-f', '--fields [Fields]', Array,
+                 'Comma separated, no spaces') do |f|
+        @options[:fields] = f
+      end
+    end
+
+    def countries(options)
+      options.on('-C', '--countries') do
+        @options[:list_countries] = true
+      end
+    end
+
+    def helptext
+      <<~HELP
+        COVID-19 Summarizer
+
+        Usage: covsum [OPTIONS] [COUNTRY] [COUNTRY (...)]
+
+        Examples:
+
+            covsum
+
+            covsum -e US world
+
+            covsum "united kingdom" -f active,recovered,deaths,confirmed
+
+            covsum Italy Germany Spain
+
+            covsum -C | fzf | xargs covsum
+
+        Country names are space separated and case insensitive. Wrap multi-word
+        names in quotes. For global data either use 'world' or leave blank.
+
+        Fields may be any combination of 'confirmed', 'recovered', 'deaths',
+        or 'active'. Note that  the API only returns confirmed, recovered, and
+        deaths; 'active' is calculated by subtracting 'recovered' and 'deaths'
+        from the confirmed count.
+
+        Data is saved in ~/.cache/coronavirus_data.json, and will be updated if
+        more than 6 hours old. Force an update now with the -U flag.
+
+        Options:
+      HELP
+    end
+
+    def defaults
+      {
+        use_cache: true,
+        emojis: false,
+        fields: %w[confirmed deaths],
+        list_countries: false
+      }
+    end
+
+    def build_locations(args)
+      @options[:locations] = args
+      @options[:locations] << 'World' if @options[:locations].empty?
+    end
+  end
+
+  # Handles Data retrieval and caching
+  class DataStore
+    def initialize(options)
+      @options = options
+    end
+
+    def data
+      @data ||= use_cache? ? read_cache : refresh_data
+    end
+
+    private
+
+    def use_cache?
+      @options[:use_cache] && cache_exists? && cache_current?
+    end
+
+    def cache_exists?
+      @cache_exists ||= File.exist?(cache_name)
+    end
+
+    def cache_current?
+      File.mtime(cache_name) > Time.now - (6 * 3600)
+    end
+
+    def read_cache
+      JSON.parse(File.read(cache_name))
+    end
+
+    def refresh_data
+      locations = hit_api(location_uri)['data']
+      total = hit_api(total_uri)['data']
+
+      new_data = process_locations(locations)
+
+      add_active(total)
+      new_data['world'] = total
+
+      write_cache(new_data)
+      new_data
+    rescue SocketError => e
+      handle_network_error(e)
+    end
+
+    def handle_network_error(error)
+      raise error unless cache_exists?
+
+      warn 'Could not refresh cache. Using old data,' \
+           " last updated #{File.mtime(cache_name)}"
+
+      read_cache
+    end
+
+    def process_locations(locations)
+      new_data = {}
+
+      locations.each do |location|
+        add_active(location)
+        name = location.delete('location').downcase
+        new_data[name] = location
+      end
+
+      new_data
+    end
+
+    def add_active(cases)
+      cases['active'] =
+        cases['confirmed'].to_i - cases['deaths'].to_i - cases['recovered'].to_i
+    end
+
+    def hit_api(uri)
+      response = Net::HTTP.get_response(uri)
+      raise response.message unless response.is_a? Net::HTTPSuccess
+
+      JSON.parse(response.body)
+    end
+
+    def write_cache(new_data)
+      cache = File.new(cache_name, 'w')
+
+      cache << new_data.to_json
+
+      cache.flush
+      cache.close
+
+      new_data
+    end
+
+    def cache_name
+      "#{Dir.home}/.cache/coronavirus_data.json"
+    end
+
+    def location_uri
+      URI.parse 'https://covid2019-api.herokuapp.com/v2/current'
+    end
+
+    def total_uri
+      URI.parse 'https://covid2019-api.herokuapp.com/v2/total'
+    end
+  end
+
+  # Converts stored data into pretty, concise strings.
+  class Formatter
+    def initialize(options, data)
+      @options = options
+      @data = data
+    end
+
+    def to_s
+      if @options[:list_countries]
+        @data.keys.join("\n")
+      else
+        @options[:locations].map { |l| format_location l }
+                            .join location_separator
+      end
+    end
+
+    private
+
+    def format_location(location)
+      stat_hash = lookup_stats(location)
+      stat_string = format_stats(stat_hash)
+
+      "#{location}: #{stat_string}"
+    end
+
+    def lookup_stats(location)
+      result = @data[location.downcase]
+
+      unless result
+        warn "Could not find '#{location}'." \
+          ' Run with the -C flag to see a list of valid countries.'
+        exit 1
+      end
+
+      result.slice(*@options[:fields])
+    end
+
+    def format_stats(stat_hash)
+      stats = []
+
+      stat_hash.each_pair do |label, stat|
+        stats << "#{format_stat(stat)} #{format_label(label)}"
+      end
+
+      stats.join stat_separator
+    end
+
+    # Shamelessly stolen from SO; adds comma separators to numbers.
+    def format_stat(stat)
+      stat
+        .to_s
+        .reverse
+        .gsub(/(\d{3})(?=\d)/, '\\1,')
+        .reverse
+    end
+
+    def format_label(label)
+      @options[:emojis] ? emojis[label] : label
+    end
+
+    # Used to separate a field name from its value
+    def stat_separator
+      @options[:emojis] ? ' ' : ', '
+    end
+
+    def location_separator
+      ' | '
+    end
+
+    def emojis
+      {
+        'active' => ' ',
+        'deaths' => 'ﮊ',
+        'confirmed' => '📈',
+        'recovered' => '✅'
+      }
+    end
+  end
+end
+
+$stdout.write CovSum::CLI.new(ARGV).to_s

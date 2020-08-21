@@ -26,6 +26,7 @@ foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd
+
 [bar/right]
 monitor = "DP-0.8"
 bottom = false
@@ -55,7 +56,7 @@ font-0 = "JetBrains Mono Nerd Font Mono:style=Regular:size=10"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast
+modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast covid
 modules-center = pulseaudio g930-bat
 modules-right = xkeyboard date powermenu
 
@@ -346,6 +347,13 @@ exec = ~/polybar-scripts/g930-bat.sh
 interval = 60
 format-prefix = " "
 format = <label>%
+
+[module/covid]
+type = custom/script
+exec = ~/polybar-scripts/covsum -e $(~/polybar-scripts/covsum-location-handler)
+interval = 600
+click-left = ~/polybar-scripts/covsum -e $(~/polybar-scripts/covsum-location-handler --increment)
+click-right = ~/polybar-scripts/covsum -e $(~/polybar-scripts/covsum-locatin-handler --decrement)
 
 [settings]
 screenchange-reload = true

@@ -1,0 +1,78 @@
+#! /bin/ruby
+
+# This is a covsum location handler, meant for integrating with taskbar widgets.
+require 'optparse'
+
+def locations
+  %w[Ukraine World US]
+end
+
+def save_location
+  "#{Dir.home}/.cache/covsum_location"
+end
+
+def current_setting
+  File.exist?(save_location) ? File.read(save_location).to_i : 0
+end
+
+def location
+  locations[current_setting]
+end
+
+def write_location(index)
+  file = File.new(save_location, 'w')
+  file << index
+  file.flush
+  file.close
+end
+
+def incremented_location
+  if current_setting >= locations.length - 1
+    0
+  else
+    current_setting + 1
+  end
+end
+
+def decremented_location
+  if current_setting.zero?
+    locations.length - 1
+  else
+    current_setting - 1
+  end
+end
+
+def increment_location
+  write_location incremented_location
+end
+
+def decrement_location
+  write_location decremented_location
+end
+
+def help_text
+  <<~HELP
+    Run with no arguments to see currently selected location.
+  HELP
+end
+
+OptionParser.new do |options|
+  options.banner = help_text
+
+  options.on '-h', '--help', 'Print Help' do
+    puts options
+    exit
+  end
+
+  options.on '-i', '--increment', 'Increment Location' do
+    increment_location
+    $stdout.write location
+  end
+
+  options.on '-d', '--decrement', 'Decrement Location' do
+    decrement_location
+    $stdout.write location
+  end
+end.parse(ARGV)
+
+$stdout.write location

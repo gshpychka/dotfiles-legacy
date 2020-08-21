@@ -41,5 +41,4 @@ source $HOME/.config/scripts/xrandr_multihead.sh
 twm &
 xclock -geometry 50x50-1+1 &
 zsh ~/.fehbg &
-picom -b &
 exec i3
