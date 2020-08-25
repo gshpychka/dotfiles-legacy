@@ -64,12 +64,15 @@ bindsym $mod+Return exec xterm
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# Take a screenshot and save it to clipboard
+bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus down
