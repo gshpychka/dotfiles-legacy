@@ -41,6 +41,7 @@ ranger
 reflector
 sql-workbench
 telegram-desktop-bin
+udisks2
 unzip
 usbutils
 xorg-xinit
