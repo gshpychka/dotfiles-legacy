@@ -126,7 +126,7 @@ module CovSum
       {
         use_cache: true,
         emojis: false,
-        fields: %w[confirmed deaths],
+        fields: %w[confirmed active],
         list_countries: false
       }
     end
