@@ -10,6 +10,7 @@ borgmatic
 brother-dcp7060d
 dhcp
 dhcpcd
+dunst
 fakeroot
 feh
 firefox
@@ -28,6 +29,7 @@ make
 man-db
 man-pages
 mate-polkit
+ncdu
 neovim
 nvidia
 patch
@@ -41,6 +43,7 @@ ranger
 reflector
 sql-workbench
 telegram-desktop-bin
+timeshift
 udiskie
 unzip
 usbutils

@@ -41,5 +41,6 @@ source $HOME/.config/scripts/xrandr_multihead.sh
 twm &
 xclock -geometry 50x50-1+1 &
 zsh ~/.fehbg &
-/usb/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+/usr/bin/dunst &
 exec i3
