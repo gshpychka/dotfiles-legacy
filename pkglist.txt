@@ -36,6 +36,7 @@ patch
 pavucontrol
 picom
 pkgconf
+pkgfile
 polybar
 python-conda
 python-tensorflow-opt-cuda
