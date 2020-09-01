@@ -58,6 +58,9 @@ bindsym $mod+Shift+- exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -
 # Split windows vertically (top/bottom)
 default_orientation vertical
 
+# Disable snapping the cursor to middle on focus
+mouse_warping none
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
