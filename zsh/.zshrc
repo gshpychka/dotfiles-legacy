@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 #
 # bgnotify
-plugins=(catimg, command-not-found)
+plugins=(catimg command-not-found)
 
 source $ZSH/oh-my-zsh.sh
 
