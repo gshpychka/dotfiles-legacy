@@ -110,3 +110,6 @@ function chpwd() {
         git status
     fi
 }
+
+# Created by `userpath` on 2020-09-02 10:57:50
+export PATH="$PATH:/home/gshpychka/.local/bin"

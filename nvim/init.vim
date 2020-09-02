@@ -3,7 +3,7 @@
 call plug#begin()
 
 " Python mode
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 " Sensible defaults
 Plug 'tpope/vim-sensible'
@@ -13,6 +13,9 @@ Plug 'tpope/vim-surround'
 
 " Git
 Plug 'tpope/vim-fugitive'
+
+" Commenting
+Plug 'tpope/vim-commentary'
 
 " Git diff in the gutter
 Plug 'airblade/vim-gitgutter'
@@ -34,6 +37,7 @@ Plug 'vim-airline/vim-airline-themes'
 " File browser
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 
 " Linting
 " Plug 'w0rp/ale'
@@ -48,7 +52,13 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 
 " SQL Workbench integration
-Plug 'cosminadrianpopescu/vim-sql-workbench'
+" Plug 'cosminadrianpopescu/vim-sql-workbench'
+
+" CoC (completion)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Filetype icons
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -92,8 +102,24 @@ let NERDTreeShowHidden=1
 " Quit if NERDTree is last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" NERDTree git icons
+let g:NERDTreeGitStatusUseNerdFonts = 0
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'',
+                \ 'Staged'    :'',
+                \ 'Untracked' :'',
+                \ 'Renamed'   :'凜',
+                \ 'Unmerged'  :'',
+                \ 'Deleted'   :'',
+                \ 'Dirty'     :'',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+let g:NERDTreeGitStatusConcealBrackets = 1
+
 " Key mapping
-nnoremap <A-f> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeToggle<CR>
 nnoremap <C-t> :TagbarToggle<CR>
 nnoremap <T> :TagbarOpen<CR>
 
@@ -104,3 +130,8 @@ nnoremap <T> :TagbarOpen<CR>
 let g:sw_config_dir='/home/gshpychka/.sqlworkbench'
 let g:sw_exe='/opt/SQLWorkbench/sqlwbconsole.sh'
 let g:sw_cacne='/home/gshpychka/.cache/sw'
+
+" Source CoC config
+source $HOME/.config/nvim/plug-config/coc.vim
+
+let g:python3_host_prog="$HOME/venvs/nvim/bin/python"
