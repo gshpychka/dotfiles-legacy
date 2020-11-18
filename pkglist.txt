@@ -44,7 +44,9 @@ python-pipx
 python-tensorflow-opt-cuda
 ranger
 reflector
+slack-desktop
 sql-workbench
+teams
 telegram-desktop-bin
 timeshift
 udiskie

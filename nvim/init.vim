@@ -60,6 +60,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Filetype icons
 Plug 'ryanoasis/vim-devicons'
 
+" Debugger
+Plug 'puremourning/vimspector'
+
 call plug#end()
 
 " Fuzzy file search
@@ -94,11 +97,10 @@ set background=dark
 colorscheme gruvbox
 
 let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts=1
-
+let g:airline_powerline_fonts=1 
 " NERDTree config
-let NERDTreeMapActivateNode='l'
-let NERDTreeShowHidden=1
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeShowHidden=1
 " Quit if NERDTree is last buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -117,6 +119,11 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Unknown'   :'?',
                 \ }
 let g:NERDTreeGitStatusConcealBrackets = 1
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeDirArrowExpandable = ""
+let g:NERDTreeDirArrowCollapsible = ""
+
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " Key mapping
 nnoremap <C-f> :NERDTreeToggle<CR>
