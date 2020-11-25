@@ -167,6 +167,19 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# define monitor output names
+set $left_monitor "DP-0.1.8"
+set $right_monitor "DP-0.8"
+
+# assign workspaces to monitors
+workspace $ws1 output $right_monitor
+workspace $ws2 output $right_monitor
+workspace $ws3 output $left_monitor
+workspace $ws4 output $left_monitor
+
+# switch between work workspace set (1 and 3) and fun workspace set (2 and 4)
+bindsym $mod+q exec "zsh ~/.config/i3/switch_work_fun.sh"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
