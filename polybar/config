@@ -305,7 +305,7 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/menu
 
-expand-right = true
+expand-right = false
 
 format-spacing = 1
 
@@ -361,7 +361,7 @@ click-right = ~/polybar-scripts/covsum -e $(~/polybar-scripts/covsum-locatin-han
 type=custom/ipc
 hook-0 = cat ~/.pomobaroutput
 initial=1
-click-left = ~/polybar-scripts/pomobar.py --action=new --duration=20 &
+click-left = ~/polybar-scripts/pomobar.py --action=new --duration=25 &
 click-middle = ~/polybar-scripts/pomobar.py --action=kill &
 click-right = ~/polybar-scripts/pomobar.py --action=break --duration=10 &
 
