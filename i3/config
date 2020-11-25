@@ -177,6 +177,10 @@ workspace $ws2 output $right_monitor
 workspace $ws3 output $left_monitor
 workspace $ws4 output $left_monitor
 
+# assign programs to workspaces
+assign [class="TelegramDesktop"] $ws4
+assign [class="Slack"] $ws3
+
 # switch between work workspace set (1 and 3) and fun workspace set (2 and 4)
 bindsym $mod+q exec "zsh ~/.config/i3/switch_work_fun.sh"
 

@@ -352,10 +352,8 @@ format = <label>%
 
 [module/covid]
 type = custom/script
-exec = ~/polybar-scripts/covsum -e $(~/polybar-scripts/covsum-location-handler)
+exec = python ~/polybar-scripts/covid_api.py
 interval = 600
-click-left = ~/polybar-scripts/covsum -e $(~/polybar-scripts/covsum-location-handler --increment)
-click-right = ~/polybar-scripts/covsum -e $(~/polybar-scripts/covsum-locatin-handler --decrement)
 
 [module/pomobar]
 type=custom/ipc
