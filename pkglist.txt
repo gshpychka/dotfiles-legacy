@@ -25,6 +25,7 @@ hwinfo
 intel-ucode
 j4-dmenu-desktop
 jq
+libreoffice-fresh
 lightdm-webkit-theme-litarvan
 maim
 make
@@ -34,11 +35,13 @@ mate-polkit
 ncdu
 neovim
 nvidia
+ofono
 patch
 pavucontrol
 picom
 pkgconf
 pkgfile
+plex-media-server-plexpass
 polybar
 python-pipx
 python-tensorflow-opt-cuda
