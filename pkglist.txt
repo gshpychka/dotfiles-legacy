@@ -3,6 +3,7 @@ autoconf
 automake
 bandwhich
 base
+bat
 bison
 blueman
 bluez-utils
@@ -21,6 +22,7 @@ fzf
 g930-battery-percentage-git
 gparted
 grub
+hub
 hwinfo
 intel-ucode
 j4-dmenu-desktop
@@ -47,6 +49,7 @@ python-pipx
 python-tensorflow-opt-cuda
 ranger
 reflector
+ripgrep
 slack-desktop
 sql-workbench
 teams
