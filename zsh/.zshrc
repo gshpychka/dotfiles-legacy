@@ -117,6 +117,12 @@ function chpwd() {
 }
 
 alias vim=nvim
+" alias git as hub
+eval "$(hub alias -s)"
+
+# fzf keybindings
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # Created by `userpath` on 2020-09-02 10:57:50
 export PATH="$PATH:/home/gshpychka/.local/bin"
