@@ -13,6 +13,7 @@ Plug 'tpope/vim-surround'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Commenting
 Plug 'tpope/vim-commentary'
@@ -39,6 +40,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " Linting
 " Plug 'w0rp/ale'
 
@@ -64,9 +69,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'puremourning/vimspector'
 
 call plug#end()
-
-" Fuzzy file search
-set rtp+=~/.fzf
 
 " Line numbers
 set number relativenumber
@@ -97,7 +99,8 @@ set background=dark
 colorscheme gruvbox
 
 let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts=1 
+let g:airline_powerline_fonts=1
+
 " NERDTree config
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeShowHidden=1
@@ -119,7 +122,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Unknown'   :'?',
                 \ }
 let g:NERDTreeGitStatusConcealBrackets = 1
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let g:NERDTreeDirArrowExpandable = ""
 let g:NERDTreeDirArrowCollapsible = ""
 
@@ -127,8 +130,11 @@ let g:vimspector_enable_mappings = 'HUMAN'
 
 " Key mapping
 nnoremap <C-f> :NERDTreeToggle<CR>
-nnoremap <C-t> :TagbarToggle<CR>
-nnoremap <T> :TagbarOpen<CR>
+nnoremap <C-b> :TagbarToggle<CR>
+" switch buffer if focused on NERDTree and bring up FZF
+nnoremap <silent> <expr> <C-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>" 
+" clear search highlighting
+nnoremap <esc> :noh<CR><esc>
 
 " Fix matching parenthesis highlighting
 " hi MatchParen ctermfg=208 ctermbg=bg
