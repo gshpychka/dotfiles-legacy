@@ -125,16 +125,17 @@ let g:NERDTreeGitStatusConcealBrackets = 1
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeDirArrowExpandable = ""
 let g:NERDTreeDirArrowCollapsible = ""
+let g:NERDTreeQuitOnOpen = 1
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
 " Key mapping
-nnoremap <C-f> :NERDTreeToggle<CR>
-nnoremap <C-b> :TagbarToggle<CR>
+nnoremap <silent> <C-f> :NERDTreeToggle<CR>
+nnoremap <silent> <C-b> :TagbarToggle<CR>
 " switch buffer if focused on NERDTree and bring up FZF
-nnoremap <silent> <expr> <C-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>" 
+nnoremap <silent> <expr> <C-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>
 " clear search highlighting
-nnoremap <esc> :noh<CR><esc>
+nnoremap <silent> <esc> :noh<CR><esc>
 
 " Fix matching parenthesis highlighting
 " hi MatchParen ctermfg=208 ctermbg=bg
