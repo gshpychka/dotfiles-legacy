@@ -117,7 +117,8 @@ function chpwd() {
 }
 
 alias vim=nvim
-" alias git as hub
+
+# alias git as hub
 eval "$(hub alias -s)"
 
 # fzf keybindings
