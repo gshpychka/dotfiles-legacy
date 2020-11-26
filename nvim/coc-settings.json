@@ -1,0 +1,23 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "markdown",
+        "javascript",
+        "graphql",
+        "html",
+        "yaml",
+        "json",
+        "python"
+    ],
+    // python config
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.jediEnabled": false,
+    "diagnostic.errorSign": ">>",
+    "diagnostic.warningSign": ">",
+    "python.venvFolders": [
+        "venvs"
+    ],
+    "python.formatting.provider": "black"
+}
