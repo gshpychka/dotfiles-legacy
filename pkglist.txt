@@ -29,6 +29,7 @@ j4-dmenu-desktop
 jq
 libreoffice-fresh
 lightdm-webkit-theme-litarvan
+lsix
 maim
 make
 man-db
