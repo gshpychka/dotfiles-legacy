@@ -93,7 +93,7 @@ def main():
                     pass
                 s.close()
             except OSError as e:
-                print("0", e)
+                print("0")
 
 
 if __name__ == "__main__":
