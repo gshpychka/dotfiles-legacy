@@ -35,6 +35,7 @@ make
 man-db
 man-pages
 mate-polkit
+mkvtoolnix-gui
 ncdu
 neovim
 nvidia
@@ -53,12 +54,14 @@ reflector
 ripgrep
 slack-desktop
 sql-workbench
+stig
 teams
 telegram-desktop-bin
 timeshift
 udiskie
 unzip
 usbutils
+vlc
 xorg-xinit
 xorg-xrandr
 yay
