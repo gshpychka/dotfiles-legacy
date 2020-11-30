@@ -368,7 +368,7 @@ hook-0 = cat ~/.pomobaroutput
 initial=1
 click-left = ~/polybar-scripts/pomobar.py --action=new --duration=25 &
 click-middle = ~/polybar-scripts/pomobar.py --action=kill &
-click-right = ~/polybar-scripts/pomobar.py --action=break --duration=10 &
+click-right = ~/polybar-scripts/pomobar.py --action=break --duration=5 &
 
 [settings]
 screenchange-reload = true
