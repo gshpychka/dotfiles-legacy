@@ -1,11 +1,15 @@
 import pip._vendor.requests as requests
 from pip._vendor.requests import HTTPError
+import subprocess
 
 try:
+    api_key = subprocess.check_output(
+        "zsh ~/dotfiles/scripts/get_key.sh covid", shell=True, text=True
+    )[:-1]
     # api_url = "https://api.covid19api.com/dayone/country/ukraine/status/{cases}/live"
     api_url = "https://apigw.nubentos.com:443/t/nubentos.com/ncovapi/2.0.0/today{cases}"
     params = {"country": "Ukraine"}
-    headers = {"Authorization": "Bearer 6eaec066-7088-33c9-b3c2-c9bbdddc5ae0"}
+    headers = {"Authorization": f"Bearer {api_key}"}
 
     data = {}
     for request_type in ["Cases", "Deaths"]:
