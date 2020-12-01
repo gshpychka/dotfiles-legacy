@@ -43,6 +43,7 @@ ofono
 patch
 pavucontrol
 picom
+pinta
 pkgconf
 pkgfile
 plex-media-server-plexpass
@@ -58,10 +59,12 @@ stig
 teams
 telegram-desktop-bin
 timeshift
+traceroute
 udiskie
 unzip
 usbutils
 vlc
+xorg-xdpyinfo
 xorg-xinit
 xorg-xrandr
 yay
