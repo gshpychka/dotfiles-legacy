@@ -92,7 +92,7 @@ def main():
                 while getATCommand(s, s.recv(128), device):
                     pass
                 s.close()
-            except OSError as e:
+            except OSError:
                 print("0")
 
 
