@@ -101,6 +101,9 @@ colorscheme gruvbox
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 
+" Allow `//` comments in json
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
 " NERDTree config
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeShowHidden=1
@@ -127,13 +130,18 @@ let g:NERDTreeDirArrowExpandable = ""
 let g:NERDTreeDirArrowCollapsible = ""
 let g:NERDTreeQuitOnOpen = 1
 
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDTrimTrailingWhitespace = 1
+
 let g:vimspector_enable_mappings = 'HUMAN'
 
 " Key mapping
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <C-b> :TagbarToggle<CR>
 " switch buffer if focused on NERDTree and bring up FZF
-nnoremap <silent> <expr> <C-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>
+nnoremap <silent> <expr> <C-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 " clear search highlighting
 nnoremap <silent> <esc> :noh<CR><esc>
 
@@ -148,4 +156,7 @@ let g:sw_cacne='/home/gshpychka/.cache/sw'
 " Source CoC config
 source $HOME/.config/nvim/plug-config/coc.vim
 
-let g:python3_host_prog="$HOME/venvs/nvim/bin/python"
+source $HOME/.config/nvim/plug-config/vimspector.vim
+
+let g:python3_host_prog="$HOME/venvs/nvim/bin/python3"
+let g:python_host_prog="$HOME/venvs/nvim2/bin/python"
