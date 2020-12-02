@@ -9,15 +9,12 @@
         "json",
         "python"
     ],
-    // python config
+    "diagnostic.errorSign": ">>",
+    "diagnostic.warningSign": ">",
+    // python settings
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
-    "python.jediEnabled": false,
-    "diagnostic.errorSign": ">>",
-    "diagnostic.warningSign": ">",
-    "python.venvFolders": [
-        "venvs"
-    ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.venvPath": "~/venvs"
 }
