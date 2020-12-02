@@ -9,6 +9,11 @@ export ZSH="/home/gshpychka/.oh-my-zsh"
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 
+# Set folder with Pyhon virtualenvs for virtualenvwrapper
+export WORKON_HOME="$HOME/venvs"
+
+source $HOME/.local/bin/virtualenvwrapper.sh
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -61,7 +66,7 @@ ZSH_THEME="agnoster"
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
+# or set a custom format usininter the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
@@ -75,7 +80,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 #
 # bgnotify
-plugins=(catimg command-not-found)
+plugins=(git vi-mode fzf zsh-interactive-cd virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,6 +129,9 @@ eval "$(hub alias -s)"
 # fzf keybindings
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+# enable vi-mode
+bindkey -v
 
 # Created by `userpath` on 2020-09-02 10:57:50
 export PATH="$PATH:/home/gshpychka/.local/bin"
