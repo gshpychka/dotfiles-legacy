@@ -44,6 +44,8 @@ Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'antoinemadec/coc-fzf'
+
 " Linting
 " Plug 'w0rp/ale'
 
@@ -60,13 +62,17 @@ Plug 'tmux-plugins/vim-tmux'
 " Plug 'cosminadrianpopescu/vim-sql-workbench'
 
 " CoC (completion)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master'}
 
 " Filetype icons
 Plug 'ryanoasis/vim-devicons'
 
 " Debugger
 Plug 'puremourning/vimspector'
+
+" Notebook-like workflow
+Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main' }
+Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 
 call plug#end()
 
@@ -136,6 +142,8 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDTrimTrailingWhitespace = 1
 
 let g:vimspector_enable_mappings = 'HUMAN'
+
+set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 
 " Key mapping
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
