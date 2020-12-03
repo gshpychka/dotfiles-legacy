@@ -133,5 +133,10 @@ source /usr/share/fzf/completion.zsh
 # enable vi-mode
 bindkey -v
 
-# Created by `userpath` on 2020-09-02 10:57:50
-export PATH="$PATH:/home/gshpychka/.local/bin"
+export PATH="$PATH:/home/gshpychka/.local/bin:/home/gshpychka/.gem/ruby/2.7.0/bin"
+
+PATH="/home/gshpychka/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/gshpychka/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/gshpychka/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/gshpychka/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/gshpychka/perl5"; export PERL_MM_OPT;
