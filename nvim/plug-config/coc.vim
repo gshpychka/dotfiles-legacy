@@ -151,3 +151,22 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" fzf in completions
+function! PInsert2(item)
+ let @z=a:item
+ norm "zp
+ call feedkeys('a')
+endfunction
+
+function! CompleteInf()
+ let nl=[]
+ let l=complete_info()
+ for k in l['items']
+  call add(nl, k['word']. ' : ' .k['info'] . ' '. k['menu'] )
+ endfor 
+ call fzf#vim#complete(fzf#wrap({ 'source': nl,'reducer': { lines -> split(lines[0], '\zs :')[0] },'sink':function('PInsert2')}))
+endfunction 
+
+imap <leader><leader> <CMD>:call CompleteInf()<CR>
+
