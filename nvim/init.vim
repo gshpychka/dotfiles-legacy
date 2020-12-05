@@ -62,7 +62,7 @@ Plug 'tmux-plugins/vim-tmux'
 " Plug 'cosminadrianpopescu/vim-sql-workbench'
 
 " CoC (completion)
-Plug 'neoclide/coc.nvim', {'branch': 'master'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Filetype icons
 Plug 'ryanoasis/vim-devicons'
