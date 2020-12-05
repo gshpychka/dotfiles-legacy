@@ -60,6 +60,7 @@ stig
 teams
 telegram-desktop-bin
 timeshift
+tmuxinator
 traceroute
 udiskie
 unzip
