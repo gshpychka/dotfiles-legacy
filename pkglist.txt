@@ -12,6 +12,7 @@ brother-dcp7060d
 ctags
 dhcp
 dhcpcd
+dropbox
 dunst
 fakeroot
 feh
@@ -63,6 +64,8 @@ traceroute
 udiskie
 unzip
 usbutils
+vagrant
+virtualbox
 vlc
 xorg-xdpyinfo
 xorg-xinit
