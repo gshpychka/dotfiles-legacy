@@ -1,4 +1,3 @@
-
 let g:vimspector_enable_mappings = 'HUMAN'
 
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
