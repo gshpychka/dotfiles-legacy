@@ -1,0 +1,29 @@
+
+" Line numbers
+set number relativenumber
+
+" Tabs and indents
+set expandtab           " Use spaces instead of tabs
+set tabstop=4           " Tab indents by 4 spaces
+set shiftwidth=4        " >> indents by 4 spaces
+set shiftround          " Round the number of spaces
+set autoindent          " Keep indentation
+
+set hidden              " Switch between buffers without having to save first
+set display=lastline    " Show as much as possible of the last line
+
+set ttyfast             " Faster redrawing
+set lazyredraw          " Only redraw when necessary
+
+set wrapscan            " Searches wrap around EOF
+
+" Fix matching parenthesis highlighting
+" hi MatchParen ctermfg=208 ctermbg=bg
+
+" Allow `//` comments in json
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
+
+let g:python3_host_prog="$HOME/venvs/nvim/bin/python3"
+let g:python_host_prog="$HOME/venvs/nvim2/bin/python"
