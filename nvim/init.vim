@@ -4,6 +4,8 @@ call plug#begin()
 
 " Python mode
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Enchanced Python highlighting
+Plug 'vim-python/python-syntax', {'for': 'python'}
 
 " Sensible defaults
 Plug 'tpope/vim-sensible'
@@ -144,6 +146,9 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:vimspector_enable_mappings = 'HUMAN'
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
+
+" Python highlighting settings
+let g:python_highlight_all = 1
 
 " Key mapping
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
