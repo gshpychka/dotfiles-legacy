@@ -62,6 +62,7 @@ modules-right = xkeyboard date powermenu
 
 tray-position = right
 tray-padding = 2
+tray-detached = false
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
