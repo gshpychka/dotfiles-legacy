@@ -23,9 +23,11 @@ fzf
 g930-battery-percentage-git
 gparted
 grub
+htop
 hub
 hwinfo
 intel-ucode
+iotop
 j4-dmenu-desktop
 jq
 libreoffice-fresh
@@ -33,17 +35,19 @@ lightdm-webkit-theme-litarvan
 lsix
 maim
 make
+makemkv
 man-db
 man-pages
 mate-polkit
 mkvtoolnix-gui
 ncdu
+nemo
 neovim-git
 nvidia
 ofono
+p7zip
 patch
 pavucontrol
-picom
 pinta
 pkgconf
 pkgfile
@@ -51,6 +55,7 @@ plex-media-server-plexpass
 polybar
 python-pipx
 python-tensorflow-opt-cuda
+qdirstat
 ranger
 reflector
 ripgrep
@@ -62,6 +67,7 @@ telegram-desktop-bin
 timeshift
 tmuxinator
 traceroute
+transmission-qt
 udiskie
 unzip
 usbutils
@@ -72,3 +78,5 @@ xorg-xdpyinfo
 xorg-xinit
 xorg-xrandr
 yay
+zip
+zoom
