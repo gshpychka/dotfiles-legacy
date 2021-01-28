@@ -1,4 +1,3 @@
-zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
@@ -44,7 +43,7 @@ ZSH_THEME="agnoster"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -127,6 +126,12 @@ alias vim=nvim
 # alias git as hub
 eval "$(hub alias -s)"
 
+# force tmux to launch with 256 colors
+alias tmux="tmux -2"
+
+# 256-color terminal support
+# export TERM="screen-256color"
+
 # fzf keybindings
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
@@ -141,5 +146,3 @@ PERL5LIB="/home/gshpychka/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL
 PERL_LOCAL_LIB_ROOT="/home/gshpychka/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/gshpychka/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/gshpychka/perl5"; export PERL_MM_OPT;
-
-zprof
