@@ -4,7 +4,8 @@ xterm*VT100*renderFont: true
 
 ! gruvbox theme
 ! hard contrast: *background: #1d2021
-*background: #282828
+*background: #1d2021
+! default: *background: #282828
 ! soft contrast: *background: #32302f
 *foreground: #ebdbb2
 ! Black + DarkGrey
