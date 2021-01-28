@@ -27,7 +27,10 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'valloric/youcompleteme'
 
 " View file structure
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
+
+" async tagbar
+Plug 'liuchengxu/vista.vim'
 
 " Solarized color scheme
 " Plug 'altercation/vim-colors-solarized'
@@ -36,6 +39,9 @@ Plug 'morhetz/gruvbox'
 " Statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Match tmux statusline colors
+Plug 'edkolev/tmuxline.vim'
 
 " File browser
 Plug 'scrooloose/nerdtree'
@@ -74,7 +80,7 @@ Plug 'puremourning/vimspector'
 
 " Notebook-like workflow
 Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main' }
-Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
+Plug 'gshpychka/vim-ipython-cell', { 'for': 'python' }
 
 call plug#end()
 
@@ -92,22 +98,29 @@ set hidden              " Switch between buffers without having to save first
 set display=lastline    " Show as much as possible of the last line
 
 set ttyfast             " Faster redrawing
-set lazyredraw          " Only redraw when necessary
+" set lazyredraw          " Only redraw when necessary
 
 set wrapscan            " Searches wrap around EOF
+
+set cmdheight=1
 
 " Styling
 syntax enable
 
 " Colorscheme
-" let g:gruvbox_termcolors=16
-" set t_Co=16
-set termguicolors
+let g:gruvbox_termcolors=256
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_bold=0
+set t_Co=256
+" set termguicolors
 set background=dark
 colorscheme gruvbox
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
+
+let g:airline_extensions = ['barnch', 'coc', 'hunks', 'tmuxline', 'vista', 'tabline']
+let g:airline#extensions#tabline#enabled = 1
 
 " Allow `//` comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -149,10 +162,40 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 
 " Python highlighting settings
 let g:python_highlight_all = 1
+let g:python_highlight_func_calls = 0
+
+" python notebook-like config
+let g:slime_target = 'tmux'
+let g:slime_python_ipython = 1
+" always execute in top-right tmux tab without asking
+let g:slime_default_config = {
+    \ 'socket_name': get(split($TMUX, ','), 0),
+    \ 'target_pane': '{top-right}' }
+let g:slime_dont_ask_default = 1
+
+nnoremap <Leader>s :SlimeSend1 ipython --matplotlib<CR>
+nnoremap <Leader>e :IPythonCellRun<CR>
+nnoremap <Leader>p :IPythonCellExecuteCellJump<CR>
+nnoremap <Leader>P :IPythonCellExecuteCell<CR>
+nnoremap <Leader>c :IPythonCellClear<CR>
+nnoremap [c :IPythonCellPrevCell<CR>
+nnoremap ]c :IPythonCellNextCell<CR>
+" map <Leader>h to send the current line or current selection to IPython
+nmap <Leader>h <Plug>SlimeLineSend
+xmap <Leader>h <Plug>SlimeRegionSend
+" map <Leader>p to run the previous command
+" nnoremap <Leader>p :IPythonCellPrevCommand<CR>
+" map <Leader>q to restart ipython
+nnoremap <Leader>q :IPythonCellRestart<CR>
+" map <Leader>d to start debug mode
+nnoremap <Leader>d :SlimeSend1 %debug<CR>
+" map <Leader>Q to exit debug mode or IPython
+nnoremap <Leader>Q :SlimeSend1 exit<CR>
 
 " Key mapping
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
-nnoremap <silent> <C-b> :TagbarToggle<CR>
+" nnoremap <silent> <C-b> :TagbarToggle<CR>
+nnoremap <silent> <C-b> :Vista!!<CR>
 " switch buffer if focused on NERDTree and bring up FZF
 nnoremap <silent> <expr> <C-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 " clear search highlighting
@@ -166,10 +209,9 @@ let g:sw_config_dir='/home/gshpychka/.sqlworkbench'
 let g:sw_exe='/opt/SQLWorkbench/sqlwbconsole.sh'
 let g:sw_cacne='/home/gshpychka/.cache/sw'
 
-" Source CoC config
 source $HOME/.config/nvim/plug-config/coc.vim
-
 source $HOME/.config/nvim/plug-config/vimspector.vim
+source $HOME/.config/nvim/plug-config/vista.vim
 
 let g:python3_host_prog="$HOME/venvs/nvim/bin/python3"
 let g:python_host_prog="$HOME/venvs/nvim2/bin/python"
