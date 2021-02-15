@@ -21,7 +21,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-commentary'
 
 " Git diff in the gutter
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 " Autocompletion
 " Plug 'valloric/youcompleteme'
@@ -119,7 +120,7 @@ colorscheme gruvbox
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 
-let g:airline_extensions = ['barnch', 'coc', 'hunks', 'tmuxline', 'vista', 'tabline']
+let g:airline_extensions = ['branch', 'coc', 'hunks', 'tmuxline', 'vista', 'tabline']
 let g:airline#extensions#tabline#enabled = 1
 
 " Allow `//` comments in json

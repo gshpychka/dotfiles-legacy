@@ -3,7 +3,7 @@
 #
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/gshpychka/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # set neovim as default text editor
 export EDITOR="/usr/bin/nvim"

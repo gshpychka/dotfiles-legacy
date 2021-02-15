@@ -18,5 +18,6 @@
     "python.formatting.provider": "black",
     "python.venvPath": "~/venvs",
     "python.analysis.useLibraryCodeForTypes": true,
-    "python.analysis.stubPath": "/home/gshpychka/venvs/.typestubs"
+    "python.analysis.stubPath": "/home/gshpychka/venvs/.typestubs",
+    "coc.preferences.extensionUpdateCheck": "daily"
 }

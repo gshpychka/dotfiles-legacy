@@ -1,2 +1,1 @@
-#include "/home/gshpychka/.Xresources.d/xterm"
-#include "/home/gshpychka/.Xresources.d/urxvt"
+#include ".Xresources.d/xterm"
