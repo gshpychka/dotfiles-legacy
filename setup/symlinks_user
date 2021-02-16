@@ -12,3 +12,5 @@ $DOTFILES/nvim:$HOME/.config
 $DOTFILES/polybar:$HOME/.config
 $DOTFILES/ranger:$HOME/.config
 $DOTFILES/tmux:$HOME/.config
+$DOTFILES/zsh/.zshrc:$HOME/.config/zsh
+$DOTFILES/zsh/.zshenv:$HOME
