@@ -2,5 +2,3 @@ $DOTFILES/lightdm.conf:/etc/lightdm
 $DOTFILES/lightdm-webkit2-greeter.conf:/etc/lightdm
 $DOTFILES/greeter_setup.sh:/etc/lightdm
 $DOTFILES/pacman/hooks/pkglist.hook:/etc/pacman.d/hooks
-
-

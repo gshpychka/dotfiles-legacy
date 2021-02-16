@@ -5,7 +5,7 @@ $DOTFILES/X/.xprofile:$HOME
 $DOTFILES/X/.Xkbmap:$HOME
 $DOTFILES/X/.Xresources:$HOME
 $DOTFILES/X/.Xresources.d:$HOME
-$DOTFILES/X/picom.conf:$HOME/.config
+$DOTFILES/X/picom.conf:$HOME/.config/
 $DOTFILES/dunst:$HOME/.config
 $DOTFILES/i3:$HOME/.config
 $DOTFILES/nvim:$HOME/.config
