@@ -1,5 +1,5 @@
 xterm*faceName: JetBrainsMono Nerd Font Mono:style=Regular
-xterm*faceSize: 10
+xterm*faceSize: 12
 xterm*VT100*renderFont: true
 
 ! gruvbox theme
