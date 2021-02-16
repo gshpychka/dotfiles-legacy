@@ -1,0 +1,5 @@
+lightdm
+plexmediaserver
+bluetooth
+systemd-resolved
+systemd-timesyncd
