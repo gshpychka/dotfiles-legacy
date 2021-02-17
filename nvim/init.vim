@@ -199,6 +199,7 @@ nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <C-b> :Vista!!<CR>
 " switch buffer if focused on NERDTree and bring up FZF
 nnoremap <silent> <expr> <C-t> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+nnoremap <silent> <expr> <C-r> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Rg\<cr>"
 " clear search highlighting
 nnoremap <silent> <esc> :noh<CR><esc>
 
