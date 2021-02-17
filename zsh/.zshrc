@@ -133,6 +133,18 @@ alias tmux="tmux -2"
 # export TERM="screen-256color"
 
 # fzf keybindings
+
+export FZF_CTRL_T_COMMAND="fd --hidden --full-path --type f /home"
+export FZF_ALT_C_COMMAND="fd --hidden --full-path --type d /"
+export FZF_DEFAULT_OPTS="
+--layout=reverse
+--info=inline
+--height=80%
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+"
+
+bindkey 'ã' fzf-cd-widget
+
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
