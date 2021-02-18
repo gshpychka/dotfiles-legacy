@@ -70,7 +70,7 @@ bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu='dmenu -i -fn "JetBrainsMono Nerd Font Mono 12"'
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -p '>'"
 
 # set up workday workflow
 bindsym $mod+Shift+w exec --no-startup-id ~/dotfiles/scripts/setup_workspaces.sh
@@ -92,6 +92,12 @@ bindsym $mod+Ctrl+h split h
 
 # split in vertical orientation
 bindsym $mod+Ctrl+v split v
+
+# move to scratchpad
+bindsym $mod+minus move scratchpad
+
+# show scratchpad
+bindsym $mod+plus scratchpad show
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
