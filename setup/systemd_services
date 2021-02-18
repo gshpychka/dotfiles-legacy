@@ -3,3 +3,4 @@ plexmediaserver
 bluetooth
 systemd-resolved
 systemd-timesyncd
+transmission
