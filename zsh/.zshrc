@@ -132,6 +132,8 @@ alias tmux="tmux -2"
 # 256-color terminal support
 # export TERM="screen-256color"
 
+eval "$(dircolors $HOME/.config/zsh/.dircolors)" 
+
 # fzf keybindings
 
 export FZF_CTRL_T_COMMAND="fd --hidden --full-path --type f /home"
