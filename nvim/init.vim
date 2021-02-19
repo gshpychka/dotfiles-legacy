@@ -5,7 +5,9 @@ call plug#begin()
 " Python mode
 " Plug 'python-mode/python-mode', { 'branch': 'develop' }
 " Enchanced Python highlighting
-Plug 'vim-python/python-syntax', {'for': 'python'}
+" Plug 'vim-python/python-syntax', {'for': 'python'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'glepnir/lspsaga.nvim'
 
 " Sensible defaults
 Plug 'tpope/vim-sensible'
@@ -53,7 +55,7 @@ Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'antoinemadec/coc-fzf'
+" Plug 'antoinemadec/coc-fzf'
 
 " Linting
 " Plug 'w0rp/ale'
@@ -71,7 +73,7 @@ Plug 'tmux-plugins/vim-tmux'
 " Plug 'cosminadrianpopescu/vim-sql-workbench'
 
 " CoC (completion)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Filetype icons
 Plug 'ryanoasis/vim-devicons'
@@ -83,7 +85,14 @@ Plug 'puremourning/vimspector'
 Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main' }
 Plug 'gshpychka/vim-ipython-cell', { 'for': 'python' }
 
+" LSP python setup
+Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lspconfig'
+
 call plug#end()
+
+set completeopt=menuone,noselect
+set updatetime=100
 
 " Line numbers
 set number relativenumber
@@ -99,7 +108,7 @@ set hidden              " Switch between buffers without having to save first
 set display=lastline    " Show as much as possible of the last line
 
 set ttyfast             " Faster redrawing
-" set lazyredraw          " Only redraw when necessary
+set lazyredraw          " Only redraw when necessary
 
 set wrapscan            " Searches wrap around EOF
 
@@ -211,9 +220,126 @@ let g:sw_config_dir='/home/gshpychka/.sqlworkbench'
 let g:sw_exe='/opt/SQLWorkbench/sqlwbconsole.sh'
 let g:sw_cacne='/home/gshpychka/.cache/sw'
 
-source $HOME/.config/nvim/plug-config/coc.vim
+" source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/vista.vim
 
 let g:python3_host_prog="$HOME/venvs/nvim/bin/python3"
 let g:python_host_prog="$HOME/venvs/nvim2/bin/python"
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+lua <<EOF
+local nvim_lsp = require('lspconfig')
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  --buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
+end
+
+
+require'compe'.setup {
+  enabled = true,
+  autocomplete = true,
+  debug = false,
+  min_length = 1,
+  preselect = 'enable',
+  throttle_time = 80,
+  source_timeout = 200,
+  incomplete_delay = 400,
+  max_abbr_width = 100,
+  max_kind_width = 100,
+  max_menu_width = 100,
+  documentation = true,
+
+  source = {
+    path = true,
+    buffer = true,
+    nvim_lsp = true,
+    treesitter = true
+  }
+}
+nvim_lsp["pyright"].setup{
+    on_attach = on_attach,
+    settings = {
+        python = {
+            analysis = {
+                stubPath = "/home/gshpychka/venvs/.typestubs",
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "basic"
+            },
+            linting = {
+                enabled = true,
+                pylintEnabled = true,
+                flake8Enabled = false
+            }
+        }
+    }
+}
+--vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
+vim.cmd [[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]]
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    underline = true,
+    signs = true,
+  }
+)
+
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "python" },
+    highlight = {
+        enable = true
+    }
+}
+
+local saga = require 'lspsaga'
+
+saga.init_lsp_saga()
+
+EOF
