@@ -33,8 +33,6 @@ if [ -d "$HOME/xinitrc.d" ] ; then
  unset f
 fi
 
-ECHO "sourced successfully" >> $HOME/xlog
-
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 /usr/bin/dunst &
 /usr/bin/picom -b
