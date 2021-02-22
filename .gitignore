@@ -1,3 +1,4 @@
 *.key
 nvim/plugged
 nvim/.netrwhist
+tmux/plugins
