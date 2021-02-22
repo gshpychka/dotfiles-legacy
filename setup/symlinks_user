@@ -11,7 +11,8 @@ $DOTFILES/i3:$HOME/.config
 $DOTFILES/nvim:$HOME/.config
 $DOTFILES/polybar:$HOME/.config
 $DOTFILES/ranger:$HOME/.config
-$DOTFILES/tmux:$HOME/.config
+$DOTFILES/tmux/tmux.conf:$HOME/.config/tmux
+$DOTFILES/tmux/tmux-colors.conf:$HOME/.config/tmux
 $DOTFILES/zsh/.zshrc:$HOME/.config/zsh
 $DOTFILES/zsh/.dircolors:$HOME/.config/zsh
 $DOTFILES/zsh/.zshenv:$HOME
