@@ -153,10 +153,19 @@ source /usr/share/fzf/completion.zsh
 # enable vi-mode
 bindkey -v
 
+# SSH agent (key management)
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
 unsetopt BEEP
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/gem/ruby/2.7.0/bin"
 
+PATH="$PATH:$HOME/.npm-global/bin"; export PATH;
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
