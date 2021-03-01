@@ -1,12 +1,6 @@
 " Plugin section
 
 call plug#begin()
-
-" Python mode
-" Plug 'python-mode/python-mode', { 'branch': 'develop' }
-" Enchanced Python highlighting
-" Plug 'vim-python/python-syntax', {'for': 'python'}
-
 " Sensible defaults
 Plug 'tpope/vim-sensible'
 
@@ -23,9 +17,6 @@ Plug 'tpope/vim-commentary'
 " Git diff in the gutter
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
-
-" Autocompletion
-" Plug 'valloric/youcompleteme'
 
 " View file structure
 " Plug 'majutsushi/tagbar'
@@ -56,11 +47,6 @@ Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Plug 'antoinemadec/coc-fzf'
-
-" Linting
-" Plug 'w0rp/ale'
-
 " Text alignment
 Plug 'tommcdo/vim-lion'
 
@@ -73,9 +59,6 @@ Plug 'tmux-plugins/vim-tmux'
 " SQL Workbench integration
 " Plug 'cosminadrianpopescu/vim-sql-workbench'
 
-" CoC (completion)
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Filetype icons
 Plug 'ryanoasis/vim-devicons'
 
@@ -86,9 +69,13 @@ Plug 'puremourning/vimspector'
 Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main' }
 Plug 'gshpychka/vim-ipython-cell', { 'for': 'python' }
 
+" black fixer
+" Plug 'psf/black'
+
 " LSP python setup
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
+" Plug 'gshpychka/lspsaga.nvim', { 'branch': 'patch-1' }
 Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 

@@ -31,11 +31,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 let g:vimspector_enable_mappings = 'HUMAN'
 
-
-" Python highlighting settings
-" let g:python_highlight_all = 1
-" let g:python_highlight_func_calls = 0
-
 " python notebook-like config
 let g:slime_target = 'tmux'
 let g:slime_python_ipython = 1
@@ -73,6 +68,9 @@ augroup END
 
 " let g:vista_default_executive = 'coc'
 
+" black fixer
+let g:black_virtualenv = '~/venvs/black'
+
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 
@@ -88,6 +86,11 @@ if has('termguicolors') "true colors
 endif
 
 exec 'luafile' expand(g:config_path . 'lua/nvim-compe.conf.lua')
+
 exec 'luafile' expand(g:config_path . 'lua/nvim-lspconfig.conf.lua')
+
 exec 'luafile' expand(g:config_path . 'lua/nvim-treesitter.conf.lua')
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 exec 'luafile' expand(g:config_path . 'lua/nvim-lspsaga.conf.lua')

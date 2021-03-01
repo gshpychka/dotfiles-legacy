@@ -19,9 +19,10 @@ set autoindent          " Keep indentation
 set hidden              " Switch between buffers without having to save first
 set display=lastline    " Show as much as possible of the last line
 set ttyfast             " Faster redrawing
-set lazyredraw          " Only redraw when necessary
+" set lazyredraw          " Only redraw when necessary
 set wrapscan            " Searches wrap around EOF
 set cmdheight=1
+set foldlevelstart=5
 syntax enable
 
 " Colorscheme
