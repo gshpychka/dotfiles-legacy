@@ -26,11 +26,11 @@ set foldlevelstart=5
 syntax enable
 
 " Colorscheme
-let g:gruvbox_termcolors=256
+" let g:gruvbox_termcolors=256
 let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_bold=0
-set t_Co=256
-" set termguicolors
+let g:gruvbox_bold=1
+" set t_Co=256
+set termguicolors
 set background=dark
 colorscheme gruvbox
 

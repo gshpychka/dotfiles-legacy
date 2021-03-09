@@ -17,3 +17,4 @@ $DOTFILES/zsh/.zshrc:$HOME/.config/zsh
 $DOTFILES/zsh/.dircolors:$HOME/.config/zsh
 $DOTFILES/zsh/.zshenv:$HOME
 $DOTFILES/yay:$HOME/.config
+$DOTFILES/alacritty:$HOME/.config
