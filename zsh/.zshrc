@@ -163,8 +163,6 @@ fi
 
 unsetopt BEEP
 
-TERM="xterm-256color"; export TERM;
-
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/gem/ruby/2.7.0/bin"
 
 PATH="$PATH:$HOME/.npm-global/bin"; export PATH;
