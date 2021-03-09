@@ -161,7 +161,7 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
-unsetopt BEEP
+# unsetopt BEEP
 
 export PATH="$PATH:$HOME/.local/bin:$HOME/.local/share/gem/ruby/2.7.0/bin"
 

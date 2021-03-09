@@ -336,13 +336,13 @@ colors:
     white:   '#ebdbb2'
   normal:
     black:   *gruvbox_dark_bg
-    red:     '#cc241d'
+    red:     &gruvbox_red '#cc241d'
     green:   '#98971a'
     yellow:  '#d79921'
     blue:    '#458588'
     magenta: '#b16286'
     cyan:    '#689d6a'
-    white:   '#a89984'
+    white:   &gruvbox_white '#a89984'
   dim:
     black:   '#32302f'
     red:     '#9d0006'
@@ -357,7 +357,7 @@ colors:
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
-#bell:
+bell:
   # Visual Bell Animation
   #
   # Animation effect for flashing the screen when the visual bell is rung.
@@ -373,14 +373,14 @@ colors:
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-  #animation: EaseOutExpo
+  animation: EaseOutSine
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
-  #duration: 0
+  duration: 200
 
   # Visual bell animation color.
-  #color: '#ffffff'
+  color: *gruvbox_white
 
   # Bell Command
   #
