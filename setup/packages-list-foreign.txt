@@ -1,0 +1,16 @@
+anaconda
+aws-cli-v2-bin
+green-recorder-git
+j4-dmenu-desktop
+lightdm-webkit-theme-litarvan-git
+neovim-git
+pacman-hook-list-installed-packages
+plex-media-server
+polybar
+python37
+python38
+rofi-dmenu
+slack-electron
+teams
+tmux-git
+yay
