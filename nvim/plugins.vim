@@ -62,6 +62,9 @@ Plug 'tmux-plugins/vim-tmux'
 " Filetype icons
 Plug 'ryanoasis/vim-devicons'
 
+" Fix CursorHold Performance
+Plug 'antoinemadec/FixCursorHold.nvim'
+
 " Debugger
 Plug 'puremourning/vimspector'
 
@@ -74,6 +77,7 @@ Plug 'gshpychka/vim-ipython-cell', { 'for': 'python' }
 
 " LSP python setup
 Plug 'hrsh7th/nvim-compe'
+Plug 'onsails/lspkind-nvim'
 Plug 'neovim/nvim-lspconfig'
 " Plug 'gshpychka/lspsaga.nvim', { 'branch': 'patch-1' }
 Plug 'glepnir/lspsaga.nvim'
