@@ -11,6 +11,7 @@ export VISUAL="/usr/bin/nvim"
 
 # Set folder with Pyhon virtualenvs for virtualenvwrapper
 export WORKON_HOME="$HOME/venvs"
+export VIRTUALENVWRAPPER_PYTHON="$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python"
 
 # source $HOME/.local/bin/virtualenvwrapper_lazy.sh
 
