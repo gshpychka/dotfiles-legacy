@@ -23,6 +23,8 @@ set ttyfast             " Faster redrawing
 set wrapscan            " Searches wrap around EOF
 set cmdheight=1
 set foldlevelstart=5
+set scrolloff=10
+set colorcolumn=88
 syntax enable
 
 " Colorscheme
@@ -33,6 +35,19 @@ let g:gruvbox_bold=0
 set termguicolors
 set background=dark
 colorscheme gruvbox
+
+hi link DiagnosticError GruvboxRedSign
+hi link DiagnosticInformation GruvboxYellowSign
+hi link DiagnosticWarning GruvboxOrangeSign
+hi link DiagnosticHint GruvboxBlueSign
+
+hi! link LspDiagnosticsDefaultError DiagnosticError
+hi! link LspDiagnosticsDefaultInformation DiagnosticInformation
+hi! link LspDiagnosticsDefaultWarning DiagnosticWarning
+hi! link LspDiagnosticsDefaultHint DiagnosticHint
+
+" undercurl not supported in alacritty
+" hi LspDiagnosticsUnderlineError cterm=undercurl gui=undercurl guisp=#fb4934
 
 " Allow `//` comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
