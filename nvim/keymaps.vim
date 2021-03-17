@@ -1,4 +1,4 @@
-nnoremap <Leader>s :SlimeSend1 ipython --matplotlib<CR>
+nnoremap <Leader>ss :SlimeSend1 ipython --matplotlib<CR>
 nnoremap <Leader>e :IPythonCellRun<CR>
 nnoremap <Leader>p :IPythonCellExecuteCellJump<CR>
 nnoremap <Leader>P :IPythonCellExecuteCell<CR>
