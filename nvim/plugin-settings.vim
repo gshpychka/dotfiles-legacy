@@ -66,10 +66,15 @@ augroup MyVimspectorUICustomistaion
 augroup END
 
 
-" let g:vista_default_executive = 'coc'
+let g:vista_sidebar_width=20
+let g:vista_echo_cursor_strategy = 'floating_win'
+let g:vista_default_executive = 'nvim_lsp'
+let g:vista#renderer#ctags = 'line'
+
+let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'vista_kind']
 
 " black fixer
-let g:black_virtualenv = '~/venvs/black'
+let g:black_virtualenv = '~/.local/pipx/venvs/black'
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
