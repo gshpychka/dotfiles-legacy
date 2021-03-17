@@ -29,7 +29,7 @@
 	"completionrefreshtime": 7,
 	"sudoloop": false,
 	"timeupdate": false,
-	"devel": false,
+	"devel": true,
 	"cleanAfter": false,
 	"provides": true,
 	"pgpfetch": true,
