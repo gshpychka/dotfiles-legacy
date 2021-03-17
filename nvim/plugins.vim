@@ -28,6 +28,9 @@ Plug 'liuchengxu/vista.vim'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 
+" renders colors. adds 200ms to startup
+" Plug 'lilydjwg/colorizer'
+
 " Statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -39,9 +42,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vimpostor/vim-tpipeline'
 
 " File browser
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'vwxyutarooo/nerdtree-devicons-syntax', { 'on': 'NERDTreeToggle' }
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -65,17 +68,20 @@ Plug 'ryanoasis/vim-devicons'
 " Fix CursorHold Performance
 Plug 'antoinemadec/FixCursorHold.nvim'
 
+" Show code minimap
+Plug 'wfxr/minimap.vim'
+
 " Debugger
-Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector', { 'for': 'python' }
 
 " Notebook-like workflow
-Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main' }
-Plug 'gshpychka/vim-ipython-cell', { 'for': 'python' }
+Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main', 'on': 'SlimeSend1'}
+Plug 'gshpychka/vim-ipython-cell', { 'for': 'python', 'on': 'SlimeSend1'}
 
 " black fixer
-" Plug 'psf/black'
+Plug 'psf/black', { 'for': 'python', 'on': 'Black' }
 
-" LSP python setup
+" LSP setup
 Plug 'hrsh7th/nvim-compe'
 Plug 'onsails/lspkind-nvim'
 Plug 'neovim/nvim-lspconfig'
