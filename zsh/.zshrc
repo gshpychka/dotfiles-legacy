@@ -130,8 +130,8 @@ eval "$(hub alias -s)"
 # force tmux to launch with 256 colors
 alias tmux="tmux -2"
 
-# 256-color terminal support
-# export TERM="screen-256color"
+# make sure SSH works no matter which terminal is on the local machine
+alias ssh="TERM=xterm-256color ssh"
 
 eval "$(dircolors $HOME/.config/zsh/.dircolors)" 
 
