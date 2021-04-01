@@ -26,7 +26,10 @@ Plug 'liuchengxu/vista.vim'
 
 " Solarized color scheme
 " Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
+" Plug 'rktjmp/lush.nvim'
+" Plug 'npxbr/gruvbox.nvim'
 
 " renders colors. adds 200ms to startup
 " Plug 'lilydjwg/colorizer'
@@ -58,6 +61,9 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " .tmux.conf editing conveniences
 Plug 'tmux-plugins/vim-tmux'
+
+" Smooth scrolling
+Plug 'karb94/neoscroll.nvim'
 
 " SQL Workbench integration
 " Plug 'cosminadrianpopescu/vim-sql-workbench'
