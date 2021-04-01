@@ -56,6 +56,8 @@ mouse_warping none
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+for_window [class="zoom"] floating enable
+
 # start a terminal
 # bindsym $mod+Return exec --no-startup-id xterm -ti 340
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -166,16 +168,21 @@ set $right_monitor "DP-0.8"
 
 # assign workspaces to monitors
 workspace $ws1 output $right_monitor
-workspace $ws2 output $right_monitor
-workspace $ws3 output $left_monitor
+workspace $ws3 output $right_monitor
+workspace $ws5 output $right_monitor
+workspace $ws7 output $right_monitor
+workspace $ws9 output $right_monitor
+workspace $ws2 output $left_monitor
 workspace $ws4 output $left_monitor
+workspace $ws6 output $left_monitor
+workspace $ws8 output $left_monitor
 
 # assign programs to workspaces
 assign [class="TelegramDesktop"] $ws4
-assign [class="Slack"] $ws3
-assign [class="Microsoft Teams"] $ws3
+assign [class="Slack"] $ws2
+assign [class="Microsoft Teams"] $ws2
 assign [class="firefox_Work"] $ws1
-assign [class="firefox_default"] $ws2
+assign [class="firefox_default"] $ws3
 
 
 # switch between work workspace set (1 and 3) and fun workspace set (2 and 4)
