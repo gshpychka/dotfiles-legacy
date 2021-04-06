@@ -87,9 +87,18 @@ nvim_lsp["pyright"].setup{
     settings = {
         python = {
             analysis = {
-                -- stubPath = "/home/gshpychka/venvs/.typestubs",
+                stubPath = "/home/gshpychka/venvs/.typestubs",
                 useLibraryCodeForTypes = true,
-                typeCheckingMode = "basic"
+                typeCheckingMode = "basic",
+                diagnosticSeverityOverrides = {
+                    reportMissingTypeStubs = "info",
+                    reportMissingImports = "error",
+                    reportImportCycles = "warning",
+                    reportDuplicateImport = "info",
+                    reportOverlappingOverload = "warning",
+                    reportIncompatibleMethodOverride = "warning",
+                    reportIncompatibleVariableOverride = "warning"
+                }
             }
         }
     }
