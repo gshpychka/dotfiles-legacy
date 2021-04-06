@@ -1,5 +1,9 @@
+amazon-ecr-credential-helper
 anaconda
 aws-cli-v2-bin
+code-minimap
+discord_arch_electron
+dropbox
 green-recorder-git
 j4-dmenu-desktop
 lightdm-webkit-theme-litarvan-git
@@ -7,6 +11,7 @@ neovim-git
 pacman-hook-list-installed-packages
 plex-media-server
 polybar
+pyright-git
 python37
 python38
 rofi-dmenu
@@ -14,3 +19,4 @@ slack-electron
 teams
 tmux-git
 yay
+zoom-system-qt

@@ -9,9 +9,12 @@ bison
 blueman
 bluez-tools
 bluez-utils
+cool-retro-term
 ctags
 dhcp
 dhcpcd
+docker
+docker-compose
 dunst
 fakeroot
 fd
@@ -42,6 +45,7 @@ i3-gaps
 intel-ucode
 iotop
 jq
+kitty
 libpam-google-authenticator
 libreoffice-fresh
 libtool
@@ -66,6 +70,7 @@ p7zip
 pacman
 patch
 pavucontrol
+perl-file-mimeinfo
 picom
 pinta
 pkgconf
@@ -75,6 +80,7 @@ python-pipx
 python2
 qrencode
 ranger
+redshift
 reflector
 ripgrep
 rofi
@@ -95,6 +101,7 @@ virtualbox
 vlc
 w3m
 which
+xarchiver
 xclip
 xorg-xdpyinfo
 xorg-xinit
