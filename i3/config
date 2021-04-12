@@ -37,6 +37,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # Start polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# Start firefox watcher utility
+# It stores the window id of the last focused Firefox window
+exec_always --no-startup-id ~/dotfiles/scripts/watch_last_active_firefox.sh ~/.local/share/applications/last_firefox_id
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -183,6 +187,7 @@ assign [class="Slack"] $ws2
 assign [class="Microsoft Teams"] $ws2
 assign [class="firefox_Work"] $ws1
 assign [class="firefox_default"] $ws3
+assign [class="firefox_alpha"] $ws5
 
 
 # switch between work workspace set (1 and 3) and fun workspace set (2 and 4)
