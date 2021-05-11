@@ -22,10 +22,13 @@ set ttyfast             " Faster redrawing
 " set lazyredraw          " Only redraw when necessary
 set wrapscan            " Searches wrap around EOF
 set cmdheight=1
-set foldlevelstart=5
-set scrolloff=10
+set foldlevelstart=9
+set scrolloff=15
 set colorcolumn=88
+set smartcase
 syntax enable
+
+set guifont=Input\ Mono\ Medium:h12
 
 " Colorscheme
 " let g:gruvbox_termcolors=256

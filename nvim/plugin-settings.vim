@@ -70,6 +70,7 @@ let g:vista_sidebar_width=20
 let g:vista_echo_cursor_strategy = 'floating_win'
 let g:vista_default_executive = 'nvim_lsp'
 let g:vista#renderer#ctags = 'line'
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'vista_kind']
 

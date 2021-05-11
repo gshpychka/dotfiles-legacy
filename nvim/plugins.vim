@@ -91,7 +91,7 @@ Plug 'psf/black', { 'for': 'python', 'on': 'Black' }
 Plug 'hrsh7th/nvim-compe'
 Plug 'onsails/lspkind-nvim'
 Plug 'neovim/nvim-lspconfig'
-" Plug 'gshpychka/lspsaga.nvim', { 'branch': 'patch-1' }
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
