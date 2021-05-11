@@ -9,6 +9,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 
+export DIFFPROG="nvim -d"
+
 # Set folder with Pyhon virtualenvs for virtualenvwrapper
 export WORKON_HOME="$HOME/venvs"
 export VIRTUALENVWRAPPER_PYTHON="$HOME/.local/pipx/venvs/virtualenvwrapper/bin/python"
@@ -119,6 +121,17 @@ function chpwd() {
     ls -a
     if [ -d .git ]; then
         git status
+    fi
+}
+
+# `tree` that honors gitignore
+function gtree {
+    git_ignore_files=("$(git config --get core.excludesfile)" .gitignore ~/.gitignore)
+    ignore_pattern="$(grep -hvE '^$|^#' "${git_ignore_files[@]}" 2>/dev/null|sed 's:/$::'|tr '\n' '\|')"
+    if git status &> /dev/null && [[ -n "${ignore_pattern}" ]]; then
+      tree -I "${ignore_pattern}" "${@}"
+    else 
+      tree "${@}"
     fi
 }
 
