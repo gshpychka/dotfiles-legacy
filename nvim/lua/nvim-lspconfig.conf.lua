@@ -81,7 +81,9 @@ local on_attach = function(client, bufnr)
   -- vim.cmd [[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]]
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = true,
+      virtual_text = {
+          prefix = ""
+      },
       underline = true,
       signs = true,
   }
@@ -91,6 +93,7 @@ end
 
 nvim_lsp["pyright"].setup{
     on_attach = on_attach,
+    cmd = { "poetry", "run", "pyright-langserver", "--stdio" },
     settings = {
         python = {
             analysis = {
