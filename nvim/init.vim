@@ -26,9 +26,8 @@ set foldlevelstart=9
 set scrolloff=15
 set colorcolumn=88
 set smartcase
+set nosmd               " Do not show mode in command line
 syntax enable
-
-set guifont=Input\ Mono\ Medium:h12
 
 " Colorscheme
 " let g:gruvbox_termcolors=256
