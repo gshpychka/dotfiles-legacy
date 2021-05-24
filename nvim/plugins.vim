@@ -87,6 +87,9 @@ Plug 'gshpychka/vim-ipython-cell', { 'for': 'python', 'on': 'SlimeSend1'}
 " black fixer
 Plug 'psf/black', { 'for': 'python', 'on': 'Black' }
 
+" cd into project root
+Plug 'ahmedkhalf/lsp-rooter.nvim'
+
 " LSP setup
 Plug 'hrsh7th/nvim-compe'
 Plug 'onsails/lspkind-nvim'
