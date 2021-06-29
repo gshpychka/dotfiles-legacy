@@ -1,6 +1,6 @@
 nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
 nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
-set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h15
+set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h16
 
 
 if exists('g:fvim_loaded')

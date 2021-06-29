@@ -88,14 +88,14 @@ Plug 'gshpychka/vim-ipython-cell', { 'for': 'python', 'on': 'SlimeSend1'}
 Plug 'psf/black', { 'for': 'python', 'on': 'Black' }
 
 " cd into project root
-Plug 'ahmedkhalf/lsp-rooter.nvim'
+" Plug 'ahmedkhalf/lsp-rooter.nvim'
 
 " LSP setup
 Plug 'hrsh7th/nvim-compe'
 Plug 'onsails/lspkind-nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/lsp_signature.nvim'
-Plug 'glepnir/lspsaga.nvim'
+" Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
