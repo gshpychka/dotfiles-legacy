@@ -107,7 +107,10 @@ nvim_lsp["pyright"].setup{
                     reportDuplicateImport = "info",
                     reportOverlappingOverload = "warning",
                     reportIncompatibleMethodOverride = "warning",
-                    reportIncompatibleVariableOverride = "warning"
+                    reportIncompatibleVariableOverride = "warning",
+                    strictParameterNoneValue = "info",
+                    reportUnnecessaryCast = "info",
+                    reportImplicitStringConcatenation = "warning"
                 }
             }
         }
