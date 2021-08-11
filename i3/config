@@ -70,7 +70,7 @@ bindsym $mod+Return exec --no-startup-id alacritty
 bindsym $mod+Shift+q kill
 
 # Take a screenshot and save it to clipboard
-bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+bindsym --release Print exec --no-startup-id import png:- | xclip -selection clipboard -t image/png
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
