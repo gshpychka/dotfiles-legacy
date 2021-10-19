@@ -3,7 +3,7 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   require('lspkind').init({
     with_text = true,
@@ -116,6 +116,8 @@ nvim_lsp["pyright"].setup{
         }
     }
 }
+
+require'lspconfig'.rust_analyzer.setup{}
 
 -- nvim_lsp["jedi_language_server"].setup{
 --     on_attach=on_attach,

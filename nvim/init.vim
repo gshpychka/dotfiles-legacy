@@ -4,11 +4,13 @@ func LoadConfig(filename)
     exec 'source' g:config_path . a:filename
 endfunc
 
-call LoadConfig('plugins.vim')
-call LoadConfig('plugin-settings.vim')
-call LoadConfig('keymaps.vim')
+if !exists('g:vscode')
+    call LoadConfig('plugins.vim')
+    call LoadConfig('plugin-settings.vim')
+    call LoadConfig('keymaps.vim')
+endif
 
-set completeopt=menuone,noselect
+" set completeopt=menuone,noselect
 set updatetime=100
 set number relativenumber
 set expandtab           " Use spaces instead of tabs
@@ -59,6 +61,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 " Fix matching parenthesis highlighting
 " hi MatchParen ctermfg=208 ctermbg=bg
 
-let g:python3_host_prog="$HOME/venvs/nvim/bin/python3"
+" let g:python3_host_prog="$HOME/venvs/nvim/bin/python3"
+let g:python3_host_prog="/home/gshpychka/venvs/nvim/bin/python3"
 let g:python_host_prog="$HOME/venvs/nvim2/bin/python"
 

@@ -91,7 +91,7 @@ let g:tpipeline_split = 1
 " 	set termguicolors
 " endif
 
-exec 'luafile' expand(g:config_path . 'lua/nvim-compe.conf.lua')
+" exec 'luafile' expand(g:config_path . 'lua/nvim-compe.conf.lua')
 
 exec 'luafile' expand(g:config_path . 'lua/nvim-lspconfig.conf.lua')
 
