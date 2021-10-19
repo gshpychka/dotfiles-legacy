@@ -86,7 +86,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 # Add wisely, as too many plugins slow down shell startup.
 #
 # bgnotify
-plugins=(git vi-mode fzf zsh-interactive-cd virtualenvwrapper)
+plugins=(git vi-mode fzf aws zsh-interactive-cd virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -188,3 +188,5 @@ PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
+
+PATH="$PATH:$HOME/.cargo/bin"; export PATH;
