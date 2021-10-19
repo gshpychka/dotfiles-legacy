@@ -37,6 +37,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # Start polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# Start networkmanager applet
+exec_always --no-startup-id nm-applet
+
 # Start firefox watcher utility
 # It stores the window id of the last focused Firefox window
 exec_always --no-startup-id ~/dotfiles/scripts/watch_last_active_firefox.sh ~/.local/share/applications/last_firefox_id
@@ -189,6 +192,8 @@ assign [class="firefox_Work"] $ws1
 assign [class="firefox_default"] $ws3
 assign [class="firefox_alpha"] $ws5
 
+# auto-switch to urgent window
+for_window [urgent="latest"] focus
 
 # switch between work workspace set (1 and 3) and fun workspace set (2 and 4)
 bindsym $mod+q exec --no-startup-id "zsh ~/.config/i3/switch_work_fun.sh"
