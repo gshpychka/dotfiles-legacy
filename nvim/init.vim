@@ -10,7 +10,7 @@ if !exists('g:vscode')
     call LoadConfig('keymaps.vim')
 endif
 
-" set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 set updatetime=100
 set number relativenumber
 set expandtab           " Use spaces instead of tabs
