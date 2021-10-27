@@ -115,6 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias imgpaste="xclip -selection clipboard -t image/png -o > image.png"
 
 DEFAULT_USER='gshpychka'
 
