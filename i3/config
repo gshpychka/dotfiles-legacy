@@ -65,6 +65,9 @@ floating_modifier $mod
 
 for_window [class="zoom"] floating enable
 
+# Disable Skype call pop-up
+for_window [title="^Skype$" floating] kill
+
 # start a terminal
 # bindsym $mod+Return exec --no-startup-id xterm -ti 340
 bindsym $mod+Return exec --no-startup-id alacritty
