@@ -57,7 +57,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast covid
-modules-center = pulseaudio g930-bat wh1000-bat
+modules-center = pulseaudio g930-bat
 modules-right = xkeyboard date powermenu
 
 tray-position = right
