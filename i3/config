@@ -55,7 +55,7 @@ bindsym $mod+Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym $mod+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 
 # Split windows vertically (top/bottom)
-default_orientation vertical
+default_orientation auto
 
 # Disable snapping the cursor to middle on focus
 mouse_warping none
@@ -83,7 +83,7 @@ bindsym --release Print exec --no-startup-id import png:- | xclip -selection cli
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -p '>'"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -p '>' -fn 'JetBrainsMono Nerd Font:size=20:style=Bold'"
 
 # set up workday workflow
 bindsym $mod+Shift+w exec --no-startup-id ~/dotfiles/scripts/setup_workspaces.sh
@@ -173,8 +173,8 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # define monitor output names
-set $left_monitor "DP-0.1.8"
-set $right_monitor "DP-0.8"
+set $left_monitor "DP-0"
+set $right_monitor "HDMI-0"
 
 # assign workspaces to monitors
 workspace $ws1 output $right_monitor
@@ -191,9 +191,8 @@ workspace $ws8 output $left_monitor
 assign [class="TelegramDesktop"] $ws4
 assign [class="Slack"] $ws2
 assign [class="Microsoft Teams"] $ws2
-assign [class="firefox_Work"] $ws1
-assign [class="firefox_default"] $ws3
-assign [class="firefox_alpha"] $ws5
+assign [class="firefox_default"] $ws4
+assign [class="firefox_alpha"] $ws1
 
 # auto-switch to urgent window
 for_window [urgent="latest"] focus
