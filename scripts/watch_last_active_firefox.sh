@@ -13,4 +13,5 @@ do
         last_firefox_id=$window_id
         echo "$last_firefox_id" > $1
     fi
+    sleep 0.1
 done
