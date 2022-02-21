@@ -59,11 +59,11 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast covid
-modules-center = pulseaudio g930-bat
-modules-right = xkeyboard date powermenu
+modules-center = pulseaudio 
+modules-right = g930-bat xkeyboard date powermenu
 
-tray-position = right
-tray-padding = 2
+tray-position =
+tray-padding = 10
 tray-detached = false
 ;tray-background = #0063ff
 
@@ -84,7 +84,7 @@ cursor-scroll = ns-resize
 [bar/left]
 monitor = "DP-0"
 monitor-fallback = "HDMI-0"
-bottom = false
+bottom = true
 width = 100%
 height = 35
 dpi-x = 144
@@ -115,11 +115,12 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 enable-ipc = true
 
 modules-left = i3 pomobar
-modules-center = memory cpu temperature system-nvidia-smi
-modules-right =
+modules-center = memory cpu temperature system-nvidia-smi filesystem eth
+modules-right = 
 
-tray-position =
-tray-padding = 2
+tray-position = right
+tray-padding = 10
+tray-detached = false
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -159,6 +160,7 @@ label-indicator-underline = ${colors.secondary}
 [module/filesystem]
 type = internal/fs
 interval = 25
+format-mounted-underline = #009f00
 
 mount-0 = /
 mount-1 = /home
@@ -237,7 +239,7 @@ interval = 3.0
 format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected = "%downspeed% / %upspeed%"
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>

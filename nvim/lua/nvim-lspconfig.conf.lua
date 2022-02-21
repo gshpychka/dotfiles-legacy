@@ -1,67 +1,32 @@
-local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  require('lspkind').init({
-    with_text = true,
-    symbol_map = {
-      Text = '',
-      Method = 'ƒ',
-      Function = '',
-      Constructor = '',
-      Variable = '',
-      Class = ' ',
-      Interface = 'ﰮ',
-      Module = '',
-      Property = '',
-      Unit = '',
-      Value = '',
-      Enum = '了',
-      Keyword = '',
-      Snippet = '﬌',
-      Color = '',
-      File = '',
-      Folder = '',
-      EnumMember = '',
-      Constant = '',
-      Struct = ''
-    },
-  })
-
-  require'lsp_signature'.on_attach()
+  -- Mappings.
+  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+  local opts = { noremap=true, silent=true }
+  vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
-  -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  -- buf_set_keymap('n', '<space>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  -- buf_set_keymap('n', '<space>e', '<cmd>lua require("lspsaga.diagnostic").show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  -- buf_set_keymap('n', '[d', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<CR>', opts)
-  -- buf_set_keymap('n', ']d', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-  -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
@@ -78,15 +43,15 @@ local on_attach = function(client, bufnr)
   end
   -- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
   -- vim.cmd [[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]]
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = {
-          prefix = ""
-      },
-      underline = true,
-      signs = true,
-  }
-  )
+  -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  -- vim.lsp.diagnostic.on_publish_diagnostics, {
+  --     virtual_text = {
+  --         prefix = ""
+  --     },
+  --     underline = true,
+  --     signs = true,
+  -- }
+  -- )
 
 end
 
@@ -123,16 +88,18 @@ local cmp = require('cmp')
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-nvim_lsp["pyright"].setup{
+require('lspconfig')["pyright"].setup{
     on_attach = on_attach,
-    -- cmd = { "poetry", "run", "pyright-langserver", "--stdio" },
-    -- cmd = { "pyright-langserver", "--stdio" },
+    -- -- cmd = { "poetry", "run", "pyright-langserver", "--stdio" },
+    -- -- cmd = { "pyright-langserver", "--stdio" },
     capabilities = capabilities,
     settings = {
         python = {
             analysis = {
                 -- stubPath = "/home/gshpychka/venvs/.typestubs",
                 useLibraryCodeForTypes = true,
+                diagnosticMode = "openFilesOnly",
+                -- autoSearchPaths = false,
                 typeCheckingMode = "basic",
                 diagnosticSeverityOverrides = {
                     reportMissingTypeStubs = "info",
@@ -151,61 +118,4 @@ nvim_lsp["pyright"].setup{
     }
 }
 
-require'lspconfig'.rust_analyzer.setup{}
-
--- nvim_lsp["jedi_language_server"].setup{
---     on_attach=on_attach,
---     settings = {
---         autoImportModules = {"pandas", "numpy", "bokeh"}
---     }
--- }
-
--- nvim_lsp["pyls"].setup{
---     on_attach = on_attach,
---     settings = {
---         pyls = {
---             plugins = {
---                 jedi_hover = {
---                     enabled = true
---                 },
---                 jedi_completion = {
---                     enabled = true
---                 },
---                 jedi_definition = {
---                     enabled = false
---                 },
---                 jedi_references = {
---                     enabled = false
---                 },
---                 jedi_signature_help = {
---                     enabled = true
---                 },
---                 jedi_symbols = {
---                     enabled = true
---                 },
---                 mccabe = {
---                     enabled = false
---                 },
---                 preload = {
---                     enabled = false
---                 },
---                 pycodestyle = {
---                     enabled = true
---                 },
---                 pyflakes = {
---                     enabled = false
---                 },
---                 pylint = {
---                     enabled = false
---                 },
---                 rope_completion = {
---                     enabled = false
---                 },
---                 yapf = {
---                     enabled = true
---                 }
---             }
---         }
---     }
--- }
-
+-- require'lspconfig'.rust_analyzer.setup{}

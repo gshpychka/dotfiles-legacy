@@ -85,14 +85,15 @@ Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main', 'on': 'SlimeSend
 Plug 'gshpychka/vim-ipython-cell', { 'for': 'python', 'on': 'SlimeSend1'}
 
 " black fixer
-Plug 'psf/black', { 'for': 'python', 'on': 'Black' }
+" Plug 'psf/black', { 'for': 'python', 'on': 'black' }
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 " cd into project root
 " Plug 'ahmedkhalf/lsp-rooter.nvim'
 
 " LSP setup
 " Plug 'hrsh7th/nvim-compe'
-Plug 'onsails/lspkind-nvim'
+" Plug 'onsails/lspkind-nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'

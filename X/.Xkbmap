@@ -1,1 +1,1 @@
--model pc105 -layout us,ua -option grp:ctrl_shift_toggle,caps:escape,terminate:actrl_alt_bksp
+-model pc105 -layout us,ua -option grp:alt_shift_toggle,caps:escape,terminate:actrl_alt_bksp

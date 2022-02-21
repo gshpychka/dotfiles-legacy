@@ -1,8 +1,8 @@
 configuration {
-    theme: "gruvbox-dark-soft";
     font: "JetBrainsMono Nerd Font Mono 12";
     matching: "fuzzy";
     sort: true;
     sorting-method: "fzf";
     hide-scrollbar: true;
 }
+@theme "gruvbox-dark-soft"

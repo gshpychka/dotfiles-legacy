@@ -142,7 +142,7 @@ function gtree {
 alias vim=nvim
 
 # alias git as hub
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 
 # force tmux to launch with 256 colors
 alias tmux="tmux -2"

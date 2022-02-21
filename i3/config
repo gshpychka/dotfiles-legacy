@@ -55,7 +55,7 @@ bindsym $mod+Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym $mod+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 
 # Split windows vertically (top/bottom)
-default_orientation auto
+default_orientation vertical
 
 # Disable snapping the cursor to middle on focus
 mouse_warping none
@@ -64,6 +64,9 @@ mouse_warping none
 floating_modifier $mod
 
 for_window [class="zoom"] floating enable
+
+# Bookmap
+for_window [class="velox-ib-Main"] floating enable
 
 # Disable Skype call pop-up
 for_window [title="^Skype$" floating] kill
@@ -192,7 +195,7 @@ assign [class="TelegramDesktop"] $ws4
 assign [class="Slack"] $ws2
 assign [class="Microsoft Teams"] $ws2
 assign [class="firefox_default"] $ws4
-assign [class="firefox_alpha"] $ws1
+assign [class="firefox_alpha"] $ws2
 
 # auto-switch to urgent window
 for_window [urgent="latest"] focus
