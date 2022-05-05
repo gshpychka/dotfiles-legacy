@@ -86,7 +86,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 # Add wisely, as too many plugins slow down shell startup.
 #
 # bgnotify
-plugins=(git vi-mode fzf aws zsh-interactive-cd virtualenvwrapper)
+plugins=(git vi-mode fzf aws zsh-interactive-cd virtualenvwrapper vscode)
 
 source $ZSH/oh-my-zsh.sh
 
