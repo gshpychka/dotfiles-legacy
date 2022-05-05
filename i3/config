@@ -71,6 +71,13 @@ for_window [class="velox-ib-Main"] floating enable
 # Disable Skype call pop-up
 for_window [title="^Skype$" floating] kill
 
+# make Slack call window floating
+for_window [title="^Slack \| Slack call"] floating enable
+
+for_window [title="^Slack \| Slack call *" floating] resize set 400 650
+
+# for_window [title="Media viewer"] floating enable
+
 # start a terminal
 # bindsym $mod+Return exec --no-startup-id xterm -ti 340
 bindsym $mod+Return exec --no-startup-id alacritty
