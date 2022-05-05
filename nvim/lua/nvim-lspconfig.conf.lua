@@ -29,18 +29,18 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead ctermbg=LightGray ctermfg=none guibg='#7c6f64' guifg=none
-      hi LspReferenceText ctermbg=LightGray ctermfg=none guibg='#7c6f64' guifg=none
-      hi LspReferenceWrite ctermbg=LightGray ctermfg=none guibg='#7c6f64' guifg=none
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
+  -- if client.server_capabilities.document_highlight then
+  --   vim.api.nvim_exec([[
+  --     hi LspReferenceRead ctermbg=LightGray ctermfg=none guibg='#7c6f64' guifg=none
+  --     hi LspReferenceText ctermbg=LightGray ctermfg=none guibg='#7c6f64' guifg=none
+  --     hi LspReferenceWrite ctermbg=LightGray ctermfg=none guibg='#7c6f64' guifg=none
+  --     augroup lsp_document_highlight
+  --       autocmd! * <buffer>
+  --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+  --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  --     augroup END
+  --   ]], false)
+  -- end
   -- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
   -- vim.cmd [[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]]
   -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -67,14 +67,14 @@ local cmp = require('cmp')
         -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
       end,
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.close(),
       ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
+    }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       -- { name = 'vsnip' }, -- For vsnip users.
@@ -86,6 +86,7 @@ local cmp = require('cmp')
     })
   })
 
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require('lspconfig')["pyright"].setup{
@@ -96,8 +97,8 @@ require('lspconfig')["pyright"].setup{
     settings = {
         python = {
             analysis = {
-                -- stubPath = "/home/gshpychka/venvs/.typestubs",
-                useLibraryCodeForTypes = true,
+                stubPath = "/home/gshpychka/venvs/.typestubs",
+                useLibraryCodeForTypes = false,
                 diagnosticMode = "openFilesOnly",
                 -- autoSearchPaths = false,
                 typeCheckingMode = "basic",
