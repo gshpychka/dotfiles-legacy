@@ -154,7 +154,7 @@ eval "$(dircolors $HOME/.config/zsh/.dircolors)"
 
 # fzf keybindings
 
-export FZF_CTRL_T_COMMAND="fd --hidden --exclude 'venvs' --exclude '.local' --exclude '.cache' --exclude '.mozilla' --exclude '**/.git/**' --exclude '**/cache/**' --exclude '**/Cache/**' --exclude '.npm/**' --exclude '.npm-global/**' --exclude '*.png' --exclude '*.ttf' --full-path --type f"
+export FZF_CTRL_T_COMMAND="fd --hidden --exclude 'venvs' --exclude '.*' --exclude 'go' --exclude 'perl5' --exclude '**/cache/**' --exclude '**/Cache/**' --exclude '*.png' --exclude '*.ttf' --full-path --type f"
 export FZF_ALT_C_COMMAND="fd --hidden --exclude 'venvs' --exclude '.local' --exclude '.cache' --exclude '.mozilla' --exclude '**/.git/**' --exclude '**/cache/**' --exclude '**/Cache/**' --exclude '.npm/**' --exclude '.npm-global/**' --exclude '*.png' --exclude '*.ttf' --full-path --type d"
 export FZF_DEFAULT_OPTS="
 --layout=reverse
