@@ -40,6 +40,9 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Start networkmanager applet
 exec_always --no-startup-id nm-applet
 
+# start 1Password
+exec --no-startup-id 1password
+
 # Start firefox watcher utility
 # It stores the window id of the last focused Firefox window
 exec_always --no-startup-id ~/dotfiles/scripts/watch_last_active_firefox.sh ~/.local/share/applications/last_firefox_id
