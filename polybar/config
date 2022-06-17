@@ -58,7 +58,7 @@ font-0 = "JetBrains Mono Nerd Font Mono:style=Regular:size=8"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast covid
+modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast ticker
 modules-center = pulseaudio 
 modules-right = g930-bat xkeyboard date powermenu
 
@@ -327,6 +327,8 @@ menu-0-0 = ﰇ
 menu-0-0-exec = sudo reboot
 menu-0-1 = ⏻
 menu-0-1-exec = sudo poweroff
+menu-0-2 = 鈴
+menu-0-2-exec = sudo systemctl hibernate
 
 [module/info-airqualityindex]
 type = custom/script
@@ -376,6 +378,11 @@ initial=1
 click-left = ~/polybar-scripts/pomobar.py --action=new --duration=25 &
 click-middle = ~/polybar-scripts/pomobar.py --action=kill &
 click-right = ~/polybar-scripts/pomobar.py --action=break --duration=5 &
+
+[module/ticker]
+type = custom/script
+exec = curl -s https://api.coinbase.com/v2/prices/btc-usd/spot | jq -r ".data.amount" | sed -E 's/(.+)/$\1/'
+interval = 600
 
 [settings]
 screenchange-reload = true
