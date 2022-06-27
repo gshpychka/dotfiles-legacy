@@ -91,10 +91,13 @@ Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 " cd into project root
 " Plug 'ahmedkhalf/lsp-rooter.nvim'
 
+Plug 'nvim-lua/plenary.nvim'
 " LSP setup
 " Plug 'hrsh7th/nvim-compe'
 " Plug 'onsails/lspkind-nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
