@@ -115,6 +115,7 @@ lspconfig.pyright.setup{
                 -- autoSearchPaths = false,
                 typeCheckingMode = "basic",
                 diagnosticSeverityOverrides = {
+                    reportUninitializedInstanceVariable = "error",
                     reportMissingTypeStubs = "info",
                     reportMissingImports = "error",
                     reportImportCycles = "warning",
