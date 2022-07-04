@@ -59,7 +59,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast ticker
-modules-center = pulseaudio 
+modules-center = pulseaudio
 modules-right = g930-bat xkeyboard date powermenu
 
 tray-position =
@@ -332,7 +332,7 @@ menu-0-2-exec = sudo systemctl hibernate
 
 [module/info-airqualityindex]
 type = custom/script
-exec = ~/polybar-scripts/info-airqualityindex.sh
+exec = setsid -w ~/polybar-scripts/info-airqualityindex.sh
 interval = 600
 format-underline = #5c9aff
 
@@ -344,11 +344,11 @@ format-underline = #f6ff00
 
 [module/notification-reddit]
 type = custom/script
-exec = ~/polybar-scripts/notification-reddit.sh
+exec = setsid -w ~/polybar-scripts/notification-reddit.sh
 
 [module/openweathermap-forecast]
 type = custom/script
-exec = ~/polybar-scripts/openweathermap-forecast.sh
+exec = setsid -w ~/polybar-scripts/openweathermap-forecast.sh
 interval = 600
 format-underline = #c2bbb2
 
@@ -368,7 +368,7 @@ format = <label>
 
 [module/covid]
 type = custom/script
-exec = python ~/polybar-scripts/covid_api.py
+exec = setsid -w ~/polybar-scripts/covid_api.py
 interval = 600
 
 [module/pomobar]
@@ -381,7 +381,7 @@ click-right = ~/polybar-scripts/pomobar.py --action=break --duration=5 &
 
 [module/ticker]
 type = custom/script
-exec = curl -s https://api.coinbase.com/v2/prices/btc-usd/spot | jq -r ".data.amount" | sed -E 's/^(.+)/$\1/'
+exec = curl -s https://api.coinbase.com/v2/prices/btc-usd/spot | jq -r ".data.amount" | sed -E 's/^(.+)/$\\1/'
 interval = 600
 
 [settings]

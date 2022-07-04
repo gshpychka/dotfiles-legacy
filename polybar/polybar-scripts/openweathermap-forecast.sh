@@ -26,7 +26,7 @@ get_icon() {
     echo $icon
 }
 
-KEY=$(~/dotfiles/scripts/get_key.sh owm)
+KEY=$(op read op://API/openweathermap/api-key --account my.1password.com)
 CITY="Kyiv"
 UNITS="metric"
 SYMBOL="°"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TOKEN=$(~/dotfiles/scripts/get_key.sh aqi)
+TOKEN=$(op read op://API/AQI/key --account my.1password.com)
 CITY="ukraine/kiyiv/vulicya-simyi-kulzhenkiv--31"
 
 API="https://api.waqi.info/feed"
