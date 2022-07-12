@@ -34,14 +34,16 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 # exec --no-startup-id nm-applet
 
+# start 1Password
+exec --no-startup-id 1password
+# sleep while I unlock 1password
+exec --no-startup-id sleep 8
+
 # Start polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Start networkmanager applet
 exec_always --no-startup-id nm-applet
-
-# start 1Password
-exec --no-startup-id 1password
 
 # Start firefox watcher utility
 # It stores the window id of the last focused Firefox window
