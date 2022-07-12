@@ -102,3 +102,5 @@ set foldexpr=nvim_treesitter#foldexpr()
 " exec 'luafile' expand(g:config_path . 'lua/nvim-lspsaga.conf.lua')
 
 let g:neoscroll_time_step_no_move_cursor = 10
+
+let g:copilot_node_command = "~/.nvm/versions/node/v17.9.1/bin/node"

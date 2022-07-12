@@ -78,11 +78,11 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'wfxr/minimap.vim'
 
 " Debugger
-Plug 'puremourning/vimspector', { 'for': 'python' }
+" Plug 'puremourning/vimspector', { 'for': 'python' }
 
 " Notebook-like workflow
-Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main', 'on': 'SlimeSend1'}
-Plug 'gshpychka/vim-ipython-cell', { 'for': 'python', 'on': 'SlimeSend1'}
+" Plug 'jpalardy/vim-slime', { 'for': 'python', 'branch': 'main', 'on': 'SlimeSend1'}
+" Plug 'gshpychka/vim-ipython-cell', { 'for': 'python', 'on': 'SlimeSend1'}
 
 " black fixer
 " Plug 'psf/black', { 'for': 'python', 'on': 'black' }
@@ -104,5 +104,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 " Plug 'glepnir/lspsaga.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'github/copilot.vim'
 
 call plug#end()
