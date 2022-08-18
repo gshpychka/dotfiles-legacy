@@ -61,6 +61,24 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 " Fix matching parenthesis highlighting
 " hi MatchParen ctermfg=208 ctermbg=bg
 
+lua << EOF
+require("nvim-tree").setup({
+    renderer = {
+        icons = {
+            glyphs = {
+                git = {
+                    unstaged = "",
+                    staged = "",
+                    untracked = "",
+                    deleted = "",
+                    ignored = "",
+                }
+            }
+        }
+    }
+})
+EOF
+
 " let g:python3_host_prog="$HOME/venvs/nvim/bin/python3"
 let g:python3_host_prog="/home/gshpychka/venvs/nvim/bin/python3"
 let g:python_host_prog="$HOME/venvs/nvim2/bin/python"

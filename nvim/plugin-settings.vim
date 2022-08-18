@@ -1,34 +1,3 @@
-" NERDTree config
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeShowHidden=1
-" Quit if NERDTree is last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" NERDTree git icons
-let g:NERDTreeGitStatusUseNerdFonts = 0
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'',
-                \ 'Staged'    :'',
-                \ 'Untracked' :'',
-                \ 'Renamed'   :'凜',
-                \ 'Unmerged'  :'',
-                \ 'Deleted'   :'',
-                \ 'Dirty'     :'',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-let g:NERDTreeGitStatusConcealBrackets = 1
-let g:NERDTreeWinPos = "left"
-let g:NERDTreeDirArrowExpandable = ""
-let g:NERDTreeDirArrowCollapsible = ""
-let g:NERDTreeQuitOnOpen = 1
-
-let g:NERDCreateDefaultMappings = 1
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDTrimTrailingWhitespace = 1
-
 let g:vimspector_enable_mappings = 'HUMAN'
 
 " python notebook-like config
@@ -104,3 +73,5 @@ set foldexpr=nvim_treesitter#foldexpr()
 let g:neoscroll_time_step_no_move_cursor = 10
 
 let g:copilot_node_command = "~/.nvm/versions/node/v17.9.1/bin/node"
+
+lua require'nvim-rooter'.setup()

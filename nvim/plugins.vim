@@ -45,9 +45,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vimpostor/vim-tpipeline'
 
 " File browser
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
-Plug 'vwxyutarooo/nerdtree-devicons-syntax', { 'on': 'NERDTreeToggle' }
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -89,7 +88,7 @@ Plug 'wfxr/minimap.vim'
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 " cd into project root
-" Plug 'ahmedkhalf/lsp-rooter.nvim'
+Plug 'notjedi/nvim-rooter.lua'
 
 Plug 'nvim-lua/plenary.nvim'
 " LSP setup

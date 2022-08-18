@@ -18,7 +18,7 @@ nnoremap <Leader>d :SlimeSend1 %debug<CR>
 nnoremap <Leader>Q :SlimeSend1 exit<CR>
 
 " Key mapping
-nnoremap <silent> <C-f> :NERDTreeToggle<CR>
+nnoremap <silent> <C-f> :NvimTreeToggle<CR>
 " nnoremap <silent> <C-b> :TagbarToggle<CR>
 nnoremap <silent> <C-b> :Vista!!<CR>
 " switch buffer if focused on NERDTree and bring up FZF
