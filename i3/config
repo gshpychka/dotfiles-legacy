@@ -36,11 +36,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # start 1Password
 exec --no-startup-id 1password
-# sleep while I unlock 1password
-exec --no-startup-id sleep 8
 
 # Start polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+# sleep while I unlock 1password
+exec_always --no-startup-id sleep 10 && ~/.config/polybar/launch.sh
 
 # Start networkmanager applet
 exec_always --no-startup-id nm-applet
