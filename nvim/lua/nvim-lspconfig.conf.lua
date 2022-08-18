@@ -107,30 +107,51 @@ lspconfig.pyright.setup{
         buf_map(bufnr, "n", "<space>f", ":Black<CR>")
     end,
     capabilities = capabilities,
-    settings = {
-        python = {
-            analysis = {
-                stubPath = "/home/gshpychka/venvs/.typestubs",
-                useLibraryCodeForTypes = false,
-                diagnosticMode = "openFilesOnly",
-                -- autoSearchPaths = false,
-                typeCheckingMode = "basic",
-                diagnosticSeverityOverrides = {
-                    reportUninitializedInstanceVariable = "error",
-                    reportMissingTypeStubs = "info",
-                    reportMissingImports = "error",
-                    reportImportCycles = "warning",
-                    reportDuplicateImport = "info",
-                    reportOverlappingOverload = "warning",
-                    reportIncompatibleMethodOverride = "warning",
-                    reportIncompatibleVariableOverride = "warning",
-                    strictParameterNoneValue = "info",
-                    reportUnnecessaryCast = "info",
-                    reportImplicitStringConcatenation = "warning"
-                }
-            }
-        }
-    }
+    -- settings = {
+    --     python = {
+    --         analysis = {
+    --             -- stubPath = "/home/gshpychka/venvs/.typestubs",
+    --             useLibraryCodeForTypes = false,
+    --             diagnosticMode = "openFilesOnly",
+    --             -- autoSearchPaths = false,
+    --             typeCheckingMode = "basic",
+    --             reportMissingTypeStubs = false,
+    --             diagnosticSeverityOverrides = {
+    --                 reportUninitializedInstanceVariable = "warning",
+    --                 reportMissingImports = "error",
+    --                 reportImportCycles = "warning",
+    --                 reportDuplicateImport = "info",
+    --                 reportOverlappingOverload = "warning",
+    --                 reportIncompatibleMethodOverride = "warning",
+    --                 reportIncompatibleVariableOverride = "warning",
+    --                 strictParameterNoneValue = "info",
+    --                 strictListInference = true,
+    --                 strictDictionaryInference = true,
+    --                 strictSetInference = true,
+    --                 reportUnnecessaryCast = "info",
+    --                 reportUnnecessaryComparison = "info",
+    --                 reportUnnecessaryIsInstance = "info",
+    --                 reportUnnecessaryTypeIgnoreComment = "info",
+    --                 reportImplicitStringConcatenation = "warning",
+    --                 reportCallInDefaultInitializer = "error",
+    --                 reportPropertyTypeMismatch = "warning",
+    --                 reportUntypedFunctionDecorator = "info",
+    --                 reportUntypedClassDecorator = "info",
+    --                 reportUntypedBaseClass = "info",
+    --                 reportPrivateUsage = "warning",
+    --                 reportConstantRedefinition = "warning",
+    --                 reportMissingSuperCall = "warning",
+    --                 reportUnknownParameterType = "none",
+    --                 reportUnknownArgumentType = "none",
+    --                 reportUnknownVariableType = "none",
+    --                 reportUnknownMemberType = "none",
+    --                 reportMissingParameterType = "none",
+    --                 reportMissingTypeArgument = "none",
+    --                 reportUnusedVariable = "info",
+    --             }
+    --         }
+    --     }
+    -- }
 }
 
 lspconfig.tsserver.setup({
