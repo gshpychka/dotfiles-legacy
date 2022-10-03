@@ -18,8 +18,7 @@ cmp.setup({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<C-y>'] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
+        ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
@@ -48,13 +47,11 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
         vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
         vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-        vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
         -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -71,29 +68,43 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format { async = true }<CR>', opts)
 
         -- Set autocommands conditional on server_capabilities
-        -- if client.server_capabilities.document_highlight then
-                -- hi LspReferenceRead guibg='#7c6f64' guifg=none
-                -- hi LspReferenceText guibg='#7c6f64' guifg=none
-                -- hi LspReferenceWrite guibg='#7c6f64' guifg=none
-        if client.server_capabilities.document_highlight then
-            vim.api.nvim_exec([[
-                hi LspReferenceRead guibg='#665c54' guifg=none
-                hi LspReferenceText guibg='#665c54' guifg=none
-                hi LspReferenceWrite guibg='#665c54' guifg=none
-                augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-                augroup END
-            ]], false)
+        if client.server_capabilities.documentHighlightProvider then
+            local group = vim.api.nvim_create_augroup("LSPDocumentHighlight", {})
+            vim.api.nvim_create_autocmd({ "CursorHold" }, {
+                buffer=bufnr,
+                group=group,
+                callback = function()
+                    vim.lsp.buf.document_highlight()
+                end,
+            })
+            vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+                buffer=bufnr,
+                group=group,
+                callback = function()
+                    vim.lsp.buf.clear_references()
+                end,
+            })
         end
-        vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus = false})]]
-        -- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+        if client.server_capabilities.signatureHelpProvider then
+            vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
+                buffer=bufnr,
+                callback = function()
+                    vim.lsp.buf.signature_help()
+                end,
+            })
+        end
+        vim.api.nvim_create_autocmd({ "CursorHold" }, {
+            buffer=bufnr,
+            callback = function()
+                vim.diagnostic.open_float(0, {focusable=false})
+            end,
+        })
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
             virtual_text = {
                 prefix = ""
             },
+            severity_sort = true,
             underline = true,
             signs = true,
         }

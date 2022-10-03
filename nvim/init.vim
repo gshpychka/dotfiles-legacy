@@ -11,7 +11,7 @@ if !exists('g:vscode')
 endif
 
 set completeopt=menu,menuone,noselect
-set updatetime=100
+set updatetime=10
 set number relativenumber
 set expandtab           " Use spaces instead of tabs
 set tabstop=4           " Tab indents by 4 spaces
@@ -21,7 +21,7 @@ set autoindent          " Keep indentation
 set hidden              " Switch between buffers without having to save first
 set display=lastline    " Show as much as possible of the last line
 set ttyfast             " Faster redrawing
-" set lazyredraw          " Only redraw when necessary
+set lazyredraw          " Only redraw when necessary
 set wrapscan            " Searches wrap around EOF
 set cmdheight=1
 set foldlevelstart=9
@@ -50,8 +50,12 @@ hi! link LspDiagnosticsDefaultInformation DiagnosticInformation
 hi! link LspDiagnosticsDefaultWarning DiagnosticWarning
 hi! link LspDiagnosticsDefaultHint DiagnosticHint
 
+hi LspReferenceRead guibg='#665c54' guifg=none
+hi LspReferenceText guibg='#665c54' guifg=none
+hi LspReferenceWrite guibg='#665c54' guifg=none
+
 " undercurl not supported in alacritty
-" hi LspDiagnosticsUnderlineError cterm=undercurl gui=undercurl guisp=#fb4934
+hi LspDiagnosticsUnderlineError cterm=undercurl gui=undercurl guisp=#fb4934
 
 " Allow `//` comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+

@@ -41,7 +41,7 @@ let g:vista_default_executive = 'nvim_lsp'
 let g:vista#renderer#ctags = 'line'
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let g:minimap_block_filetypes = ['fugitive', 'nerdtree', 'vista_kind']
+let g:minimap_block_filetypes = ['fugitive', 'vista_kind']
 
 " black fixer
 let g:black_virtualenv = '~/.local/pipx/venvs/black'
@@ -70,7 +70,7 @@ set foldexpr=nvim_treesitter#foldexpr()
 
 " exec 'luafile' expand(g:config_path . 'lua/nvim-lspsaga.conf.lua')
 
-let g:neoscroll_time_step_no_move_cursor = 10
+exec 'luafile' expand(g:config_path . 'lua/neoscroll.conf.lua')
 
 let g:copilot_node_command = "~/.nvm/versions/node/v17.9.1/bin/node"
 
