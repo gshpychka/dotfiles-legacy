@@ -84,8 +84,8 @@ Plug 'wfxr/minimap.vim'
 " Plug 'gshpychka/vim-ipython-cell', { 'for': 'python', 'on': 'SlimeSend1'}
 
 " black fixer
-" Plug 'psf/black', { 'for': 'python', 'on': 'black' }
-Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'psf/black', { 'for': 'python' }
+" Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 " cd into project root
 Plug 'notjedi/nvim-rooter.lua'

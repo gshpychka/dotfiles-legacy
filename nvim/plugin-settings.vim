@@ -44,7 +44,7 @@ let g:vista#renderer#ctags = 'line'
 let g:minimap_block_filetypes = ['fugitive', 'vista_kind']
 
 " black fixer
-let g:black_virtualenv = '~/.local/pipx/venvs/black'
+" let g:black_virtualenv = '~/.local/pipx/venvs/black'
 
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1

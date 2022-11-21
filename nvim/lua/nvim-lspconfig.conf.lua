@@ -85,14 +85,14 @@ local on_attach = function(client, bufnr)
                 end,
             })
         end
-        if client.server_capabilities.signatureHelpProvider then
-            vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
-                buffer=bufnr,
-                callback = function()
-                    vim.lsp.buf.signature_help()
-                end,
-            })
-        end
+        -- if client.server_capabilities.signatureHelpProvider then
+        --     vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
+        --         buffer=bufnr,
+        --         callback = function()
+        --             vim.lsp.buf.signature_help()
+        --         end,
+        --     })
+        -- end
         vim.api.nvim_create_autocmd({ "CursorHold" }, {
             buffer=bufnr,
             callback = function()
@@ -167,8 +167,8 @@ lspconfig.pyright.setup{
 
 lspconfig.tsserver.setup({
    on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
 
         local ts_utils = require("nvim-lsp-ts-utils")
         ts_utils.setup({})
