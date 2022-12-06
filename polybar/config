@@ -381,7 +381,7 @@ click-right = ~/polybar-scripts/pomobar.py --action=break --duration=5 &
 
 [module/ticker]
 type = custom/script
-exec = curl -s https://api.coinbase.com/v2/prices/btc-usd/spot | jq -r ".data.amount" | sed -E 's/^(.+)/$\\1/'
+exec = curl -s https://api.coinbase.com/v2/prices/btc-usd/spot 2>/dev/null | jq -r ".data.amount" 2>/dev/null | sed -E 's/^(.+)/$\\1/'
 interval = 600
 
 [settings]
