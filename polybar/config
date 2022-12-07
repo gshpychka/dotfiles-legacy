@@ -58,7 +58,7 @@ font-0 = "JetBrains Mono Nerd Font Mono:style=Regular:size=8"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast ticker
+modules-left = i3 notification-reddit info-airqualityindex openweathermap-forecast ticker ecoflow-status
 modules-center = pulseaudio
 modules-right = g930-bat xkeyboard date powermenu
 
@@ -345,6 +345,10 @@ format-underline = #f6ff00
 [module/notification-reddit]
 type = custom/script
 exec = setsid -w ~/polybar-scripts/notification-reddit.sh
+
+[module/ecoflow-status]
+type = custom/script
+exec = setsid -w ~/polybar-scripts/ecoflow.sh
 
 [module/openweathermap-forecast]
 type = custom/script
