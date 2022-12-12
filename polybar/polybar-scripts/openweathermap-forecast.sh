@@ -27,7 +27,7 @@ get_icon() {
 }
 
 KEY=$(op read op://API/openweathermap/api-key --account my.1password.com 2>/dev/null)
-CITY="Kyiv"
+CITY=$(op read op://API/openweathermap/city --account my.1password.com 2>/dev/null)
 UNITS="metric"
 SYMBOL="°"
 

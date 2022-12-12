@@ -1,11 +1,10 @@
 #!/bin/sh
 
-TOKEN=$(op read op://API/AQI/key --account my.1password.com)
-CITY="ukraine/kiyiv/vulicya-simyi-kulzhenkiv--31"
-
+TOKEN=$(op read op://API/AQI/key --account my.1password.com 2>/dev/null)
+CITY=$(op read op://API/AQI/location --account my.1password.com 2>/dev/null)
 API="https://api.waqi.info/feed"
 
-aqi=$(curl -sf "$API/$CITY/?token=$TOKEN")
+aqi=$(curl -sf "$API/$CITY/?token=$TOKEN 2>/dev/null")
 
 if [ -n "$aqi" ]; then
     if [ "$(echo "$aqi" | jq -r '.status')" = "ok" ]; then
